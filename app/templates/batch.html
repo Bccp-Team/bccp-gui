@@ -1,0 +1,9 @@
+{% set page = 'batchs' %}
+{% extends "base.html" %}
+{% block content %}
+{% for kind in runs %}
+{% with runs = runs[kind] %}
+{% include "list_runs.html" %}
+{% endwith %}
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <title>Welcome to BCCP web gui</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <a class="navbar-brand" href="/index">BCCP</a>
+                    <li
+                        {% if page == 'namespaces'%}
+                            class="active"
+                        {% endif %}
+                    ><a href="/namespaces">Namespace<span class="sr-only">(current)</span></a></li>
+                    <li
+                        {% if page == 'batchs'%}
+                            class="active"
+                        {% endif %}
+                    ><a href="/batchs">Batchs<span class="sr-only">(current)</span></a></li>
+                    <li
+                        {% if page == 'runners'%}
+                            class="active"
+                        {% endif %}
+                    ><a href="/runners">Runners<span class="sr-only">(current)</span></a></li>
+                    <li
+                        {% if page == 'runs'%}
+                            class="active"
+                        {% endif %}
+                    ><a href="/runs">Runs<span class="sr-only">(current)</span></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    {% block content %}{% endblock %}
+  </body>
+</html>

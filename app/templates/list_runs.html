@@ -1,0 +1,26 @@
+<table class="table table-striped">
+    <tr>
+        <th>Id</th>
+        <th>Status</th>
+        <th>Runner</th>
+        <th>Batch</th>
+    </tr>
+    {% for run in runs%}
+        <tr
+            {% if run['status'] == 'waiting' or run['status'] == 'running'%}
+                class="warning"
+            {% elif run['status'] == 'finished'%}
+                class="active"
+            {% elif run['status'] == 'failed' or run['status'] == 'timeout'%}
+                class="danger"
+            {% elif run['status'] == 'canceled'%}
+                class="info"
+            {% endif %}
+        >
+            <td><a href="/runs/{{ run['id'] }}">{{run['id']}}<td>
+            <td>{{ run['status'] }}<td>
+            <td><a href="/runners/{{ run['runner_id'] }}">{{run['runner_id']}}<td>
+            <td><a href="/batchs/{{ run['batch'] }}">{{run['batch']}}<td>
+        </tr>
+    {% endfor %}
+</table>

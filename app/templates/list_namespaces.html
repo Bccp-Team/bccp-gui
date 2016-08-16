@@ -1,0 +1,10 @@
+<table class="table table-striped">
+    <tr>
+        <th>Namespace</th>
+    </tr>
+    {% for namespace in namespaces %}
+        <tr>
+            <td><a href="/namespaces/{{ namespace }}">{{ namespace }}</a><td>
+        </tr>
+    {% endfor %}
+</table>

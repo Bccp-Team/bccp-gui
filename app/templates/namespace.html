@@ -1,0 +1,6 @@
+{% set page = 'namespaces' %}
+{% extends "base.html" %}
+{% block content %}
+    <h1> {{ namespace }} </h1>
+    {% include "list_repos.html" %}
+{% endblock %}

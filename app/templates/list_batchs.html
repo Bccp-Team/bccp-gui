@@ -1,0 +1,16 @@
+<table class="table table-striped">
+    <tr>
+        <th>Id</th>
+        <th>Namespace</th>
+        <th>Update time</th>
+        <th>Timeout</th>
+    </tr>
+    {% for batch in batchs %}
+        <tr>
+            <td><a href="/batchs/{{ batch['id'] }}">{{ batch['id']}}</a><td>
+            <td><a href="/namespaces/{{ batch['namespace'] }}">{{ batch['namespace']}}</a><td>
+            <td>{{ batch['update_time']}}<td>
+            <td>{{ batch['timeout']}}<td>
+        </tr>
+    {% endfor %}
+</table>
