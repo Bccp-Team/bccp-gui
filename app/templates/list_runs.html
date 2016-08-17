@@ -17,10 +17,10 @@
                 class="info"
             {% endif %}
         >
-            <td><a href="/runs/{{ run['id'] }}">{{run['id']}}<td>
-            <td>{{ run['status'] }}<td>
-            <td><a href="/runners/{{ run['runner_id'] }}">{{run['runner_id']}}<td>
-            <td><a href="/batchs/{{ run['batch'] }}">{{run['batch']}}<td>
+            <td><a href="/runs/{{ run['id'] }}">{{run['id']}}</td>
+            <td>{{ run['status'] }}</td>
+            <td><a href="/runners/{{ run['runner_id'] }}">{{run['runner_id']}}</td>
+            <td><a href="/batchs/{{ run['batch'] }}">{{run['batch']}}</td>
         </tr>
     {% endfor %}
 </table>

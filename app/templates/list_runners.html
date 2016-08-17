@@ -3,7 +3,7 @@
         <th>Name</th>
         <th>Status</th>
         <th>IP</th>
-        <th>Batch</th>
+        <th>Last connection</th>
     </tr>
     {% for runner in runners%}
         <tr
@@ -13,10 +13,10 @@
                 class="danger"
             {% endif %}
         >
-            <td><a href="/runners/{{ runner['id'] }}">{{runner['name']}}<td>
-            <td>{{ runner['status'] }}<td>
-            <td>{{ runner['ip'] }}<td>
-            <td>{{ runner['last_connection'] }}<td>
+            <td><a href="/runners/{{ runner['id'] }}">{{runner['name']}}</a></td>
+            <td>{{ runner['status'] }}</td>
+            <td>{{ runner['ip'] }}</td>
+            <td>{{ runner['last_connection'] }}</td>
         </tr>
     {% endfor %}
 </table>
