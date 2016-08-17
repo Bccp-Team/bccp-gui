@@ -1,4 +1,5 @@
 from flask import render_template
+from flask import redirect
 from app import app
 from app import api
 
@@ -12,3 +13,8 @@ def runner(runner_id):
     runner = api.get_runner(runner_id)
     runs = api.get_runner_run(runner_id)
     return render_template('runner.html', runner=runner, runs=runs)
+
+@app.route('/runners/<int:runner_id>/kill')
+def kill(runner_id):
+    api.kill_runner(runner_id)
+    return redirect('/runners/' + str(runner_id))

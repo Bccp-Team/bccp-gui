@@ -1,10 +1,38 @@
 {% set page = 'runs' %}
 {% extends "base.html" %}
 {% block content %}
-    <p>Id: {{ run['id'] }}</p>
-    <p>Status: {{ run['status'] }}</p>
-    <p>Batch: <a href="/batchs/{{ run['batch'] }}">{{run['batch']}}</a></p>
-    <p>Runner: <a href="/runners/{{ run['runner_id'] }}">{{run['runner_id']}}</a></p>
-    <p>Repo: <a href="/namespaces/repo/{{ run['repo'] }}">{{run['repo']}}</a></p>
-    <pre> {{ run['logs'] }} </pre>
+<div class="row">
+    <div class="col-md-4">
+        <div class="row col-md-4 col-md-offset-2">
+            <p>Id</p>
+            <p>Batch</a></p>
+            <p>Runner</p>
+            <p>Repo</p>
+            <p><a href="/runs/{{ run['id'] }}/retry">retry</a></p>
+            {% if run['status'] == 'waiting' or run['status'] == 'running'%}
+                <p><a href="/runs/{{ run['id'] }}/cancel">cancel</a></p>
+            {% endif %}
+        </div>
+        <div class="row col-md-6">
+            <p>{{ run['id'] }}</p>
+            <p><a href="/batchs/{{ run['batch'] }}">{{run['namespace']}}({{run['batch']}})</a></p>
+            <p><a href="/runners/{{ run['runner_id'] }}">{{run['runner_name']}}</a></p>
+            <p><a href="/namespaces/repo/{{ run['repo'] }}">{{run['repo_name']}}</a></p>
+        </div>
+    </div>
+    <div class="col-md-7">
+        <div class="alert
+            {% if run['status'] == 'waiting' or run['status'] == 'running'%}
+            alert-warning
+            {% elif run['status'] == 'finished'%}
+            alert-success
+            {% elif run['status'] == 'failed' or run['status'] == 'timeout'%}
+            alert-danger
+            {% elif run['status'] == 'canceled'%}
+            alert-info
+            {% endif %}
+            " role="alert">{{ run['status'] }}</div>
+        <pre>{{ run['logs'] }}</pre>
+    </div>
+</div>
 {% endblock %}

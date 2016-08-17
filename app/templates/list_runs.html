@@ -4,6 +4,7 @@
         <th>Status</th>
         <th>Runner</th>
         <th>Batch</th>
+        <th>Repo</th>
     </tr>
     {% for run in runs%}
         <tr
@@ -17,10 +18,11 @@
                 class="info"
             {% endif %}
         >
-            <td><a href="/runs/{{ run['id'] }}">{{run['id']}}</td>
+            <td><a href="/runs/{{ run['id'] }}">{{run['id']}}</a></td>
             <td>{{ run['status'] }}</td>
-            <td><a href="/runners/{{ run['runner_id'] }}">{{run['runner_id']}}</td>
-            <td><a href="/batchs/{{ run['batch'] }}">{{run['batch']}}</td>
+            <td><a href="/runners/{{ run['runner_id'] }}">{{run['runner_name']}}</a></td>
+            <td><a href="/batchs/{{ run['batch'] }}">{{run['namespace']}}({{run['batch']}})</a></td>
+            <td><a href="/namespaces/repo/{{ run['repo'] }}">{{run['repo_name']}}</a></td>
         </tr>
     {% endfor %}
 </table>

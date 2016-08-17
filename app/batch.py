@@ -8,6 +8,9 @@ def batchs():
     return render_template('batchs.html', batchs=batchs)
 
 @app.route('/batchs/<int:batch_id>')
-def batch(batch_id):
+@app.route('/batchs/<int:batch_id>/<kind>')
+def batch(batch_id, kind = 'waiting'):
     batch = api.get_batch(batch_id)
-    return render_template('batch.html', batch=batch, runs=batch['runs'])
+    for key in batch['runs']:
+        if batch['runs'][key] == None: batch['runs'][key] = []
+    return render_template('batch.html', batch=batch, runs=batch['runs'], kind=kind)
