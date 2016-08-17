@@ -1,0 +1,22 @@
+<table class="table table-striped">
+    <tr>
+        <th>Name</th>
+        <th>Status</th>
+        <th>IP</th>
+        <th>Batch</th>
+    </tr>
+    {% for runner in runners%}
+        <tr
+            {% if runner['status'] == 'waiting' or runner['status'] == 'running'%}
+                class="success"
+            {% elif runner['status'] == 'dead'%}
+                class="danger"
+            {% endif %}
+        >
+            <td><a href="/runners/{{ runner['id'] }}">{{runner['name']}}<td>
+            <td>{{ runner['status'] }}<td>
+            <td>{{ runner['ip'] }}<td>
+            <td>{{ runner['last_connection'] }}<td>
+        </tr>
+    {% endfor %}
+</table>

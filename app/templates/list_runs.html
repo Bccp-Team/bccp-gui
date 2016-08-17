@@ -10,7 +10,7 @@
             {% if run['status'] == 'waiting' or run['status'] == 'running'%}
                 class="warning"
             {% elif run['status'] == 'finished'%}
-                class="active"
+                class="success"
             {% elif run['status'] == 'failed' or run['status'] == 'timeout'%}
                 class="danger"
             {% elif run['status'] == 'canceled'%}

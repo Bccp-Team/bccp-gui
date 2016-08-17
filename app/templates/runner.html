@@ -1,0 +1,10 @@
+{% set page = 'runners' %}
+{% extends "base.html" %}
+{% block content %}
+    <p>Id: {{ runner['id'] }}</p>
+    <p>Name: {{ runner['name'] }}</p>
+    <p>Status: {{ runner['status'] }}</p>
+    <p>IP: {{ runner['ip'] }}</p>
+    <p>Last connection: {{ runner['last_connection'] }}</p>
+{% include "list_runs.html" %}
+{% endblock %}

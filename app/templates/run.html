@@ -1,0 +1,10 @@
+{% set page = 'runs' %}
+{% extends "base.html" %}
+{% block content %}
+    <p>Id: {{ run['id'] }}</p>
+    <p>Status: {{ run['status'] }}</p>
+    <p>Batch: <a href="/batchs/{{ run['batch'] }}">{{run['batch']}}</a></p>
+    <p>Runner: <a href="/runners/{{ run['runner_id'] }}">{{run['runner_id']}}</a></p>
+    <p>Repo: <a href="/namespaces/repo/{{ run['repo'] }}">{{run['repo']}}</a></p>
+    <pre> {{ run['logs'] }} </pre>
+{% endblock %}
