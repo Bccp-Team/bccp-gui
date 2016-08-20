@@ -18,7 +18,16 @@
                 class="info"
             {% endif %}
         >
-            <td><a href="/runs/{{ run['id'] }}">{{run['id']}}</a></td>
+            <td><a href="/runs/{{ run['id'] }}">{{run['id']}}</a>
+                <a href="/runs/{{ run['id'] }}/retry" class="icon">
+                    <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>
+                </a>
+                {% if run['status'] == 'waiting' or run['status'] == 'running'%}
+                    <a href="/runs/{{ run['id'] }}/cancel" class="icon">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </a>
+                {% endif %}
+            </td>
             <td>{{ run['status'] }}</td>
             <td><a href="/runners/{{ run['runner_id'] }}">{{run['runner_name']}}</a></td>
             <td><a href="/batchs/{{ run['batch'] }}">{{run['namespace']}}({{run['batch']}})</a></td>

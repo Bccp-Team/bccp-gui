@@ -4,9 +4,15 @@ from app import app
 from app import api
 
 @app.route('/runners')
-def runners():
-    runners = api.list_runners()
-    return render_template('runners.html', runners=runners)
+@app.route('/runners/<kind>/<int:offset>')
+def runners(kind='waiting', offset=0):
+    data = {}
+    status = None
+    if kind != 'total':
+        status = kind
+    runners = api.list_runners(status=status, offset=offset, limit=10)
+    stats = api.stats_runners()
+    return render_template('runners.html', runners=runners, stats=stats, offset=offset, kind=kind)
 
 @app.route('/runners/<int:runner_id>')
 def runner(runner_id):
@@ -17,4 +23,4 @@ def runner(runner_id):
 @app.route('/runners/<int:runner_id>/kill')
 def kill(runner_id):
     api.kill_runner(runner_id)
-    return redirect('/runners/' + str(runner_id))
+    return redirect('/runners')

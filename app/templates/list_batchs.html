@@ -10,7 +10,11 @@
     <tbody>
     {% for batch in batchs %}
         <tr>
-            <td><a href="/batchs/{{ batch['id'] }}">{{ batch['id']}}</a></td>
+            <td><a href="/batchs/{{ batch['id'] }}">{{ batch['id']}}</a>
+                <a href="/batchs/{{ batch['id'] }}/restart" class="icon">
+                    <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>
+                </a>
+            </td>
             <td><a href="/namespaces/{{ batch['namespace'] }}">{{ batch['namespace']}}</a></td>
             <td>{{ batch['update_time']}}</td>
             <td>{{ batch['timeout']}}</td>

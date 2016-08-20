@@ -3,6 +3,9 @@
 {% block content %}
 <div class="row">
     <div class="col-md-6">
+        <p>
+            <a href="/batchs/{{ batch['id'] }}/restart">restart</a>
+        </p>
         <pre>{{ batch['init_script'] }}</pre>
     </div>
     <div class="col-md-6">

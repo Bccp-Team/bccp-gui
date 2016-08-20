@@ -13,7 +13,13 @@
                 class="danger"
             {% endif %}
         >
-            <td><a href="/runners/{{ runner['id'] }}">{{runner['name']}}</a></td>
+            <td><a href="/runners/{{ runner['id'] }}">{{runner['name']}}</a>
+                {% if runner['status'] == 'waiting' or runner['status'] == 'running'%}
+                    <a href="/runners/{{ runner['id'] }}/kill" class="icon">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </a>
+                {% endif %}
+            </td>
             <td>{{ runner['status'] }}</td>
             <td>{{ runner['ip'] }}</td>
             <td>{{ runner['last_connection'] }}</td>

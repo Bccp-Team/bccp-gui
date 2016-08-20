@@ -22,4 +22,4 @@ def retry(run_id):
 @app.route('/runs/<int:run_id>/cancel')
 def cancel(run_id):
     api.cancel_run(run_id)
-    return redirect('/runs/' + str(run_id))
+    return redirect('/runs')

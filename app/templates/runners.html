@@ -2,6 +2,58 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="col-md-8 col-md-offset-2">
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+            <ul class="nav nav-tabs">
+                {% for type in ['Total', 'Waiting', 'Dead'] %}
+                    {% if type.lower() == kind %}
+                        <li role="presentation" class="active"><a href="#">{{ type }}({{ stats[kind] }})</a></li>
+                    {% else %}
+                        <li role="presentation"><a href="/runners/{{type.lower()}}/0">{{ type }}({{ stats[type.lower()] }})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            {% if offset - 10 >= 0 %}
+                    <li>
+                        <a href="/runners/{{ kind }}/{{offset - 10}}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+            {% else  %}
+                    <li class="disabled">
+                        <a href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+            {% endif %}
+            {% for i in range(offset // 10 - 2, offset // 10 + 3) %}
+            {% if i >= 0 and i * 10 <= stats[kind] %}
+                <li
+                    {% if i * 10 == offset %}
+                        class="active"
+                    {% endif %}
+                   >
+                    <a href="/runners/{{ kind }}/{{i * 10}}">
+                        {{ i }}
+                    </a>
+                </li>
+            {% endif %}
+            {% endfor %}
+            {% if offset + 10 <= stats[kind] %}
+            <li>
+                <a href="/runners/{{ kind }}/{{offset + 10}}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+            {% else  %}
+                    <li class="disabled">
+                        <a href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+            {% endif %}
+        </ul>
+    </nav>
     {% include "list_runners.html" %}
 </div>
 {% endblock %}
