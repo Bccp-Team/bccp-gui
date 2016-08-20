@@ -15,10 +15,15 @@ def runners(kind='waiting', offset=0):
     return render_template('runners.html', runners=runners, stats=stats, offset=offset, kind=kind)
 
 @app.route('/runners/<int:runner_id>')
-def runner(runner_id):
+@app.route('/runners/<int:runner_id>/<kind>/<int:offset>')
+def runner(runner_id, offset=0, kind='running'):
+    if kind == 'all':
+        runs = api.list_runs(data={'runner': str(runner_id)}, limit=10, offset=offset)
+    else:
+        runs = api.list_runs(data={'runner': str(runner_id),'status':kind}, limit=10, offset=offset)
     runner = api.get_runner(runner_id)
-    runs = api.get_runner_run(runner_id)
-    return render_template('runner.html', runner=runner, runs=runs)
+    stats = api.stats_run(data={'runner':str(runner_id)})
+    return render_template('runner.html', runner=runner, runs=runs, stats=stats, kind=kind, offset=offset)
 
 @app.route('/runners/<int:runner_id>/kill')
 def kill(runner_id):

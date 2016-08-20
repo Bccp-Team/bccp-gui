@@ -1,5 +1,6 @@
 {% set page = 'namespaces' %}
 {% extends "base.html" %}
 {% block content %}
+{% set list_run_url = "/namespaces/repo/" + repo|string + "/%s/%d" %}
 {% include "list_runs.html"%}
 {% endblock %}
