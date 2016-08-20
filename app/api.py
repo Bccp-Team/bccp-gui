@@ -44,6 +44,11 @@ def stats_run(data={}):
     r = requests.get(repos_url, verify=False, data=json.dumps(data))
     return r.json()
 
+def stats_batch(data={}):
+    repos_url = base_url + "/batch/stats"
+    r = requests.get(repos_url, verify=False, data=json.dumps(data))
+    return r.json()
+
 def list_runs(data={}, limit=0, offset=0):
     run_url = base_url + "/run"
     data = dict(data)

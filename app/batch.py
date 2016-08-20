@@ -4,9 +4,14 @@ from app import app
 from app import api
 
 @app.route('/batchs')
-def batchs():
-    batchs = api.list_batchs(active=True)
-    return render_template('batchs.html', batchs=batchs)
+@app.route('/batchs/<kind>/<int:offset>')
+def batchs(kind="active", offset=0):
+    if kind == "active":
+        batchs = api.list_batchs(active=True, offset=offset, limit=10)
+    else:
+        batchs = api.list_batchs(offset=offset, limit=10)
+    stats = api.stats_batch()
+    return render_template('batchs.html', batchs=batchs, kind=kind, stats=stats, offset=offset)
 
 @app.route('/batchs/<int:batch_id>')
 @app.route('/batchs/<int:batch_id>/<kind>/<int:offset>')
