@@ -4,9 +4,14 @@ from app import app
 from app import api
 
 @app.route('/runs')
-def runs():
-    runs = api.list_runs()
-    return render_template('runs.html', runs=runs)
+@app.route('/runs/<kind>/<int:offset>')
+def runs(kind="waiting",offset=0):
+    if kind == 'all':
+        runs = api.list_runs(limit = 10, offset=offset)
+    else:
+        runs = api.list_runs(data={'status':kind}, limit = 10, offset=offset)
+    stats = api.stats_run()
+    return render_template('runs.html', runs=runs, stats=stats, kind=kind, offset=offset)
 
 @app.route('/runs/<int:run_id>')
 def run(run_id):

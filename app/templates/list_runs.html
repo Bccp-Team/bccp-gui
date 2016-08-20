@@ -6,6 +6,62 @@
         <th>Batch</th>
         <th>Repo</th>
     </tr>
+
+            <ul class="nav nav-tabs">
+            {% for type in ['All', 'Waiting', 'Running', 'Canceled', 'Finished', 'Failed', 'Timeout']%}
+                {% if type.lower() == kind %}
+                <li role="presentation" class="active"><a href="#">{{ type }}({{ stats[kind]}})</a></li>
+                {% else %}
+                <li role="presentation"><a href="{{ list_run_url % (type.lower(), 0)}}">{{ type }}({{ stats[type.lower()] }})</a></li>
+                {% endif %}
+            {% endfor %}
+            </ul>
+
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+            {% if offset - 10 >= 0 %}
+                    <li>
+                        <a href="{{ list_run_url % (kind, offset - 10)}}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+            {% else  %}
+                    <li class="disabled">
+                        <a href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+            {% endif %}
+            {% for i in range(offset // 10 - 2, offset // 10 + 3) %}
+            {% if i >= 0 and i * 10 < stats[kind] %}
+                <li
+                    {% if i * 10 == offset %}
+                        class="active"
+                    {% endif %}
+                   >
+                    <a href="{{ list_run_url % (kind, i * 10)}}">
+                        {{ i }}
+                    </a>
+                </li>
+            {% endif %}
+            {% endfor %}
+            {% if offset + 10 < stats[kind] %}
+            <li>
+                <a href="{{ list_run_url % (kind, offset + 10)}}" aria-label="Previous">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+            {% else  %}
+                    <li class="disabled">
+                        <a href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+            {% endif %}
+        </ul>
+    </nav>
+
+
     {% for run in runs%}
         <tr
             {% if run['status'] == 'waiting' or run['status'] == 'running'%}

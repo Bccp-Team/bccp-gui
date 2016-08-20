@@ -13,7 +13,7 @@ def list_ns():
 def list_batchs(active=False, limit=0,offset=0):
     batchs_url = base_url + "/batch"
     if active: batchs_url += "/active"
-    r = requests.get(batchs_url, verify=False, data=json.dumps({"limit": limit, offset:offset}))
+    r = requests.get(batchs_url, verify=False, data=json.dumps({"limit": limit, "offset":offset}))
     res = r.json()
     if not res: res = []
     return res
@@ -39,12 +39,16 @@ def stats_runners():
     r = requests.get(repos_url, verify=False)
     return r.json()
 
+def stats_run(data={}):
+    repos_url = base_url + "/run/stats"
+    r = requests.get(repos_url, verify=False, data=json.dumps(data))
+    return r.json()
+
 def list_runs(data={}, limit=0, offset=0):
     run_url = base_url + "/run"
     data = dict(data)
     data['limit'] = limit
     data['offset'] = offset
-    print(data)
     r = requests.get(run_url, verify=False, data=json.dumps(data))
     res = r.json()
     if not res: res = []

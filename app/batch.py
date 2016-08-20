@@ -9,12 +9,15 @@ def batchs():
     return render_template('batchs.html', batchs=batchs)
 
 @app.route('/batchs/<int:batch_id>')
-@app.route('/batchs/<int:batch_id>/<kind>')
-def batch(batch_id, kind = 'waiting'):
+@app.route('/batchs/<int:batch_id>/<kind>/<int:offset>')
+def batch(batch_id, offset=0, kind = 'waiting'):
+    if kind == 'all':
+        runs = api.list_runs(data={'batch':str(batch_id)}, limit = 10, offset=offset)
+    else:
+        runs = api.list_runs(data={'status':kind, 'batch':str(batch_id)}, limit = 10, offset=offset)
+    stats = api.stats_run(data={'batch':str(batch_id)})
     batch = api.get_batch(batch_id)
-    for key in batch['runs']:
-        if batch['runs'][key] == None: batch['runs'][key] = []
-    return render_template('batch.html', batch=batch, runs=batch['runs'], kind=kind)
+    return render_template('batch.html', batch=batch, runs=runs, kind=kind, stats=stats, offset=offset)
 
 @app.route('/batchs/<int:batch_id>/restart')
 def restart(batch_id):

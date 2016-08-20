@@ -9,18 +9,8 @@
         <pre>{{ batch['init_script'] }}</pre>
     </div>
     <div class="col-md-6">
-        <ul class="nav nav-tabs">
-            {% for type in ['Waiting', 'Running', 'Canceled', 'Finished', 'Failed', 'Timeout']%}
-                {% if type.lower() == kind %}
-                <li role="presentation" class="active"><a href="#">{{ type }}({{ runs[type.lower()]|length }})</a></li>
-                {% else %}
-                <li role="presentation"><a href="/batchs/{{batch['id']}}/{{type.lower()}}">{{ type }}({{ runs[type.lower()]|length }})</a></li>
-                {% endif %}
-            {% endfor %}
-        </ul>
-        {% with runs = runs[kind] %}
+        {% set list_run_url = "/batchs/" + batch['id']|string + "/%s/%d" %}
         {% include "list_runs.html" %}
-        {% endwith %}
     </div>
 </div>
 {% endblock %}

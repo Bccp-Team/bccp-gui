@@ -8,7 +8,7 @@ from app import api
 def runners(kind='waiting', offset=0):
     data = {}
     status = None
-    if kind != 'total':
+    if kind != 'all':
         status = kind
     runners = api.list_runners(status=status, offset=offset, limit=10)
     stats = api.stats_runners()
