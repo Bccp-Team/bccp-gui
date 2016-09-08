@@ -2,9 +2,9 @@
     <tr>
         <th>Namespace</th>
     </tr>
-    {% for namespace in namespaces %}
+    {% for namespace in namespaces.namespaces %}
         <tr>
-            <td><a href="/namespaces/{{ namespace }}">{{ namespace }}</a></td>
+            <td><a href="/namespaces/{{ namespace.name }}">{{ namespace.name }}</a></td>
         </tr>
     {% endfor %}
 </table>

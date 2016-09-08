@@ -21,10 +21,10 @@ def run(run_id):
 @app.route('/runs/<int:run_id>/retry')
 def retry(run_id):
     run = api.get_run(run_id)
-    run = api.add_run_batch(run['batch'], run['repo'])
-    return redirect('/runs/' + run['ok'])
+    run = api.add_run_batch(run)
+    return redirect('/runs/' + str(run.id))
 
 @app.route('/runs/<int:run_id>/cancel')
 def cancel(run_id):
-    api.cancel_run(run_id)
+    api.cancel_run(api.get_run(run_id))
     return redirect('/runs')

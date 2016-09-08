@@ -3,10 +3,10 @@
         <th>Name</th>
         <th>Repos</th>
     </tr>
-    {% for repo in repos %}
+    {% for repo in repos.repos %}
         <tr>
-            <td><a href="/namespaces/repo/{{ repo['id'] }}">{{ repo['repo'] }}</a></td>
-            <td>{{ repo['ssh'] }}</td>
+            <td><a href="/namespaces/repo/{{ repo.id }}">{{ repo.repo }}</a></td>
+            <td>{{ repo.ssh }}</td>
         </tr>
     {% endfor %}
 </table>

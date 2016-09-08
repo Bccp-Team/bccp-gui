@@ -5,6 +5,7 @@ from app import api
 @app.route('/namespaces')
 def namespaces():
     namespaces = api.list_ns()
+    print(namespaces)
     return render_template('namespaces.html', namespaces=namespaces)
 
 @app.route('/namespaces/<namespace>')

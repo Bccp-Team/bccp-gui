@@ -10,9 +10,9 @@
             <ul class="nav nav-tabs">
             {% for type in ['All', 'Waiting', 'Running', 'Canceled', 'Finished', 'Failed', 'Timeout']%}
                 {% if type.lower() == kind %}
-                <li role="presentation" class="active"><a href="#">{{ type }}({{ stats[kind]}})</a></li>
+                <li role="presentation" class="active"><a href="#">{{ type }}({{ stats.__getattribute__(kind)}})</a></li>
                 {% else %}
-                <li role="presentation"><a href="{{ list_run_url % (type.lower(), 0)}}">{{ type }}({{ stats[type.lower()] }})</a></li>
+                <li role="presentation"><a href="{{ list_run_url % (type.lower(), 0)}}">{{ type }}({{ stats.__getattribute__(type.lower()) }})</a></li>
                 {% endif %}
             {% endfor %}
             </ul>
@@ -33,7 +33,7 @@
                     </li>
             {% endif %}
             {% for i in range(offset // 10 - 2, offset // 10 + 3) %}
-            {% if i >= 0 and i * 10 < stats[kind] %}
+            {% if i >= 0 and i * 10 < stats.__getattribute__(kind) %}
                 <li
                     {% if i * 10 == offset %}
                         class="active"
@@ -45,7 +45,7 @@
                 </li>
             {% endif %}
             {% endfor %}
-            {% if offset + 10 < stats[kind] %}
+            {% if offset + 10 < stats.__getattribute__(kind) %}
             <li>
                 <a href="{{ list_run_url % (kind, offset + 10)}}" aria-label="Previous">
                     <span aria-hidden="true">&raquo;</span>
@@ -62,32 +62,32 @@
     </nav>
 
 
-    {% for run in runs%}
+    {% for run in runs.runs %}
         <tr
-            {% if run['status'] == 'waiting' or run['status'] == 'running'%}
+            {% if run.status == 'waiting' or run.status == 'running'%}
                 class="warning"
-            {% elif run['status'] == 'finished'%}
+            {% elif run.status == 'finished'%}
                 class="success"
-            {% elif run['status'] == 'failed' or run['status'] == 'timeout'%}
+            {% elif run.status == 'failed' or run.status == 'timeout'%}
                 class="danger"
-            {% elif run['status'] == 'canceled'%}
+            {% elif run.status == 'canceled'%}
                 class="info"
             {% endif %}
         >
-            <td><a href="/runs/{{ run['id'] }}">{{run['id']}}</a>
-                <a href="/runs/{{ run['id'] }}/retry" class="icon">
+            <td><a href="/runs/{{ run.id }}">{{run.id}}</a>
+                <a href="/runs/{{ run.id }}/retry" class="icon">
                     <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>
                 </a>
-                {% if run['status'] == 'waiting' or run['status'] == 'running'%}
-                    <a href="/runs/{{ run['id'] }}/cancel" class="icon">
+                {% if run.status == 'waiting' or run.status == 'running'%}
+                    <a href="/runs/{{ run.id }}/cancel" class="icon">
                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                     </a>
                 {% endif %}
             </td>
-            <td>{{ run['status'] }}</td>
-            <td><a href="/runners/{{ run['runner_id'] }}">{{run['runner_name']}}</a></td>
-            <td><a href="/batchs/{{ run['batch'] }}">{{run['namespace']}}({{run['batch']}})</a></td>
-            <td><a href="/namespaces/repo/{{ run['repo'] }}">{{run['repo_name']}}</a></td>
+            <td>{{ run.status }}</td>
+            <td><a href="/runners/{{ run.runnerId }}">{{run.runnerName}}</a></td>
+            <td><a href="/batchs/{{ run.batch }}">{{run.namespace}}({{run.batch}})</a></td>
+            <td><a href="/namespaces/repo/{{ run.repoId }}">{{run.repoName}}</a></td>
         </tr>
     {% endfor %}
 </table>

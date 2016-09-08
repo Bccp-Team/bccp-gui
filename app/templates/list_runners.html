@@ -9,9 +9,9 @@
     <ul class="nav nav-tabs">
         {% for type in ['All', 'Waiting', 'Dead'] %}
             {% if type.lower() == kind %}
-                <li role="presentation" class="active"><a href="#">{{ type }}({{ stats[kind] }})</a></li>
+                <li role="presentation" class="active"><a href="#">{{ type }}({{ stats.__getattribute__(kind) }})</a></li>
             {% else %}
-            <li role="presentation"><a href= "{{ list_runner_url % (type.lower(), 0)}}">{{ type }}({{ stats[type.lower()] }})</a></li>
+            <li role="presentation"><a href= "{{ list_runner_url % (type.lower(), 0)}}">{{ type }}({{ stats.__getattribute__(type.lower()) }})</a></li>
             {% endif %}
         {% endfor %}
     </ul>
@@ -32,7 +32,7 @@
                     </li>
             {% endif %}
             {% for i in range(offset // 10 - 2, offset // 10 + 3) %}
-            {% if i >= 0 and i * 10 <= stats[kind] %}
+            {% if i >= 0 and i * 10 <= stats.__getattribute__(kind) %}
                 <li
                     {% if i * 10 == offset %}
                         class="active"
@@ -44,7 +44,7 @@
                 </li>
             {% endif %}
             {% endfor %}
-            {% if offset + 10 <= stats[kind] %}
+            {% if offset + 10 <= stats.__getattribute__(kind) %}
             <li>
                 <a href="{{ list_runner_url % (kind, offset + 10)}}" aria-label="Previous">
                     <span aria-hidden="true">&raquo;</span>
@@ -61,24 +61,24 @@
     </nav>
 
 
-    {% for runner in runners%}
+    {% for runner in runners.runners %}
         <tr
-            {% if runner['status'] == 'waiting' or runner['status'] == 'running'%}
+            {% if runner.status == 'waiting' or runner.status == 'running'%}
                 class="success"
-            {% elif runner['status'] == 'dead'%}
+            {% elif runner.status == 'dead'%}
                 class="danger"
             {% endif %}
         >
-            <td><a href="/runners/{{ runner['id'] }}">{{runner['name']}}</a>
-                {% if runner['status'] == 'waiting' or runner['status'] == 'running'%}
-                    <a href="/runners/{{ runner['id'] }}/kill" class="icon">
+            <td><a href="/runners/{{ runner.id }}">{{runner.name}}</a>
+                {% if runner.status == 'waiting' or runner.status == 'running'%}
+                    <a href="/runners/{{ runner.id }}/kill" class="icon">
                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                     </a>
                 {% endif %}
             </td>
-            <td>{{ runner['status'] }}</td>
-            <td>{{ runner['ip'] }}</td>
-            <td>{{ runner['last_connection'] }}</td>
+            <td>{{ runner.status }}</td>
+            <td>{{ runner.ip }}</td>
+            <td>{{ runner.last_connection }}</td>
         </tr>
     {% endfor %}
 </table>

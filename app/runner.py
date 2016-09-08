@@ -27,5 +27,5 @@ def runner(runner_id, offset=0, kind='running'):
 
 @app.route('/runners/<int:runner_id>/kill')
 def kill(runner_id):
-    api.kill_runner(runner_id)
+    api.kill_runner(api.get_runner(runner_id))
     return redirect('/runners')

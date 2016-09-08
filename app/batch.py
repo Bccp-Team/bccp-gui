@@ -22,6 +22,7 @@ def batch(batch_id, offset=0, kind = 'waiting'):
         runs = api.list_runs(data={'status':kind, 'batch':str(batch_id)}, limit = 10, offset=offset)
     stats = api.stats_run(data={'batch':str(batch_id)})
     batch = api.get_batch(batch_id)
+    print(batch)
     return render_template('batch.html', batch=batch, runs=runs, kind=kind, stats=stats, offset=offset)
 
 @app.route('/batchs/<int:batch_id>/restart')

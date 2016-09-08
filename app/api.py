@@ -1,101 +1,65 @@
 import requests
 import json
+import api_pb2
+import grpc
 
-base_url = "https://ml1"
+server = "localhost:50000"
+channel = grpc.insecure_channel(server)
+stub = api_pb2.ApiStub(channel)
 
 def list_ns():
-    namespace_url = base_url + "/namespace"
-    r = requests.get(namespace_url, verify=False)
-    res = r.json()
-    if not res: res = []
-    return res
+    return stub.NamespaceList(api_pb2.Criteria())
 
 def list_batchs(active=False, limit=0,offset=0):
-    batchs_url = base_url + "/batch"
-    if active: batchs_url += "/active"
-    r = requests.get(batchs_url, verify=False, data=json.dumps({"limit": limit, "offset":offset}))
-    res = r.json()
-    if not res: res = []
-    return res
+    if active:
+        return stub.BatchListActive(api_pb2.Criteria(filters={}, limit=limit, offset=offset))
+    else:
+        return stub.BatchList(api_pb2.Criteria(filters={}, limit=limit, offset=offset))
 
 def list_repos(namespace):
-    repos_url = base_url + "/namespace/" + namespace
-    r = requests.get(repos_url, verify=False)
-    res = r.json()
-    if not res: res = []
-    return res
+    return stub.NamespaceGet(api_pb2.Namespace(name=namespace))
 
 def list_runners(status=None,limit=0,offset=0):
-    repos_url = base_url + "/runner"
-    data = {'limit': limit, 'offset': offset}
-    if status: data['status'] = status
-    r = requests.get(repos_url, verify=False, data=json.dumps(data))
-    res = r.json()
-    if not res: res = []
-    return res
+    if status:
+        return stub.RunnerList(api_pb2.Criteria(filters={"status": status}, limit=0, offset=0))
+    else:
+        return stub.RunnerList(api_pb2.Criteria(limit=0, offset=0))
 
 def stats_runners():
-    repos_url = base_url + "/runner/stats"
-    r = requests.get(repos_url, verify=False)
-    return r.json()
+    return stub.RunnerStat(api_pb2.Criteria())
 
 def stats_run(data={}):
-    repos_url = base_url + "/run/stats"
-    r = requests.get(repos_url, verify=False, data=json.dumps(data))
-    return r.json()
+    return stub.RunStat(api_pb2.Criteria(filters=data))
 
 def stats_batch(data={}):
-    repos_url = base_url + "/batch/stats"
-    r = requests.get(repos_url, verify=False, data=json.dumps(data))
-    return r.json()
+    return stub.BatchStat(api_pb2.Criteria(filters=data))
 
 def list_runs(data={}, limit=0, offset=0):
-    run_url = base_url + "/run"
-    data = dict(data)
-    data['limit'] = limit
-    data['offset'] = offset
-    r = requests.get(run_url, verify=False, data=json.dumps(data))
-    res = r.json()
-    if not res: res = []
-    return res
+    return stub.RunList(api_pb2.Criteria(filters=data, limit=limit, offset=offset))
 
 def get_repo_run(repo_id, limit=0, offset=0):
     return list_runs(data={'repo': str(repo_id)}, limit=limit, offset=offset)
 
 def get_batch(batch_id):
-    batch_url = base_url + "/batch/" + str(batch_id)
-    r = requests.get(batch_url, verify=False)
-    return r.json()
+    return stub.BatchGet(api_pb2.Batch(id=batch_id))
 
 def get_run(run_id):
-    run_url = base_url + "/run/" + str(run_id)
-    r = requests.get(run_url, verify=False)
-    return r.json()
+    return stub.RunGet(api_pb2.Run(id=run_id))
 
 def get_runner(runner_id):
-    runner_url = base_url + "/runner/" + str(runner_id)
-    r = requests.get(runner_url, verify=False)
-    return r.json()
+    return stub.RunnerGet(api_pb2.Runner(id=runner_id))
 
 def get_runner_run(runner_id, limit=0, offset=0):
     return list_runs(data={'runner': str(runner_id)}, limit=limit, offset=offset)
 
-def add_run_batch(batch_id, repo_id):
-    run_url = base_url + "/run/%d/%d" % (batch_id, repo_id)
-    print(run_url)
-    r = requests.put(run_url, verify=False)
-    return r.json()
+def add_run_batch(run):
+    return stub.RunStart(run)
 
-def cancel_run(run_id):
-    run_url = base_url + "/run/" + str(run_id)
-    r = requests.delete(run_url, verify=False)
-    return r.json()
+def cancel_run(run):
+    return stub.RunCancel(run)
 
-def kill_runner(run_id):
-    runner_url = base_url + "/runner/" + str(run_id)
-    r = requests.delete(runner_url, verify=False)
-    return r.json()
+def kill_runner(run):
+    return stub.RunnerKill(run)
 
 def add_batch(batch):
-    runner_url = base_url + "/run"
-    r = requests.put(runner_url, verify=False, data=json.dumps(batch))
+    return stub.BatchStart(batch)

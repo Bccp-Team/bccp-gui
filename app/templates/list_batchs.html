@@ -1,9 +1,9 @@
     <ul class="nav nav-tabs">
         {% for type in ['All', 'Active'] %}
             {% if type.lower() == kind %}
-                <li role="presentation" class="active"><a href="#">{{ type }}({{ stats[kind] }})</a></li>
+                <li role="presentation" class="active"><a href="#">{{ type }}({{ stats.__getattribute__(kind) }})</a></li>
             {% else %}
-            <li role="presentation"><a href= "{{ list_batch_url % (type.lower(), 0)}}">{{ type }}({{ stats[type.lower()] }})</a></li>
+            <li role="presentation"><a href= "{{ list_batch_url % (type.lower(), 0)}}">{{ type }}({{ stats.__getattribute__(type.lower()) }})</a></li>
             {% endif %}
         {% endfor %}
     </ul>
@@ -24,7 +24,7 @@
                     </li>
             {% endif %}
             {% for i in range(offset // 10 - 2, offset // 10 + 3) %}
-            {% if i >= 0 and i * 10 <= stats[kind] %}
+            {% if i >= 0 and i * 10 <= stats.__getattribute__(kind) %}
                 <li
                     {% if i * 10 == offset %}
                         class="active"
@@ -36,7 +36,7 @@
                 </li>
             {% endif %}
             {% endfor %}
-            {% if offset + 10 <= stats[kind] %}
+            {% if offset + 10 <= stats.__getattribute__(kind) %}
             <li>
                 <a href="{{ list_batch_url % (kind, offset + 10)}}" aria-label="Previous">
                     <span aria-hidden="true">&raquo;</span>
@@ -62,16 +62,16 @@
     </tr>
     </thead>
     <tbody>
-    {% for batch in batchs %}
+    {% for batch in batchs.batchs %}
         <tr>
-            <td><a href="/batchs/{{ batch['id'] }}">{{ batch['id']}}</a>
-                <a href="/batchs/{{ batch['id'] }}/restart" class="icon">
+            <td><a href="/batchs/{{ batch.id }}">{{ batch.id}}</a>
+                <a href="/batchs/{{ batch.id }}/restart" class="icon">
                     <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>
                 </a>
             </td>
-            <td><a href="/namespaces/{{ batch['namespace'] }}">{{ batch['namespace']}}</a></td>
-            <td>{{ batch['update_time']}}</td>
-            <td>{{ batch['timeout']}}</td>
+            <td><a href="/namespaces/{{ batch.namespace }}">{{ batch.namespace}}</a></td>
+            <td>{{ batch.updateTime}}</td>
+            <td>{{ batch.timeout}}</td>
         </tr>
     {% endfor %}
     </tbody>
