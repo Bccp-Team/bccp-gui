@@ -3,7 +3,7 @@ import json
 import api_pb2
 import grpc
 
-server = "localhost:50000"
+server = "fact-srv:8080"
 channel = grpc.insecure_channel(server)
 stub = api_pb2.ApiStub(channel)
 
