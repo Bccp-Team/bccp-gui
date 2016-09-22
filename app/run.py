@@ -19,7 +19,11 @@ def runs(kind="waiting",offset = 0):
 @app.route('/runs/<int:run_id>')
 def run(run_id):
     run = api.get_run(run_id)
-    return render_template('run.html', run=run)
+    stats_runners = api.stats_runners()
+    stats_run = api.stats_run()
+    stats_batch = api.stats_batch()
+    return render_template('run.html', run = run, stats_runners =
+        stats_runners, stats_run = stats_run, stats_batch = stats_batch)
 
 @app.route('/runs/<int:run_id>/retry')
 def retry(run_id):
