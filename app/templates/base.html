@@ -19,17 +19,21 @@
                         {% if page == 'batchs'%}
                             class="active"
                         {% endif %}
-                    ><a href="/batchs">Batchs<span class="sr-only">(current)</span></a></li>
+                    ><a href="/batchs">Batchs({{
+                      stats_batch.__getattribute__('active') }})<span class="sr-only">(current)</span></a></li>
                     <li
                         {% if page == 'runners'%}
                             class="active"
                         {% endif %}
-                    ><a href="/runners">Runners<span class="sr-only">(current)</span></a></li>
+                    ><a href="/runners">Runners({{
+                      stats_runners.__getattribute__('waiting') }})<span class="sr-only">(current)</span></a></li>
                     <li
                         {% if page == 'runs'%}
                             class="active"
                         {% endif %}
-                    ><a href="/runs">Runs<span class="sr-only">(current)</span></a></li>
+                    ><a href="/runs">Runs({{
+                      stats_run.__getattribute__('running') }}/{{
+                      stats_run.__getattribute__('waiting') }})<span class="sr-only">(current)</span></a></li>
                 </ul>
             </div>
         </div>

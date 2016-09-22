@@ -5,13 +5,16 @@ from app import api
 
 @app.route('/runs')
 @app.route('/runs/<kind>/<int:offset>')
-def runs(kind="waiting",offset=0):
+def runs(kind="waiting",offset = 0):
     if kind == 'all':
-        runs = api.list_runs(limit = 10, offset=offset)
+        runs = api.list_runs(limit = 10, offset = offset)
     else:
-        runs = api.list_runs(data={'status':kind}, limit = 10, offset=offset)
-    stats = api.stats_run()
-    return render_template('runs.html', runs=runs, stats=stats, kind=kind, offset=offset)
+        runs = api.list_runs(data={'status':kind}, limit = 10, offset = offset)
+    stats_runners = api.stats_runners()
+    stats_run = api.stats_run()
+    stats_batch = api.stats_batch()
+    return render_template('runs.html', runs = runs, kind = kind, stats_runners =
+        stats_runners, stats_run = stats_run, stats_batch = stats_batch, offset = offset)
 
 @app.route('/runs/<int:run_id>')
 def run(run_id):

@@ -1,10 +1,11 @@
     <ul class="nav nav-tabs">
         {% for type in ['All', 'Active'] %}
             {% if type.lower() == kind %}
-                <li role="presentation" class="active"><a href="#">{{ type }}({{ stats.__getattribute__(kind) }})</a></li>
+                <li role="presentation" class="active"><a href="#">{{ type
+                  }}({{ stats_batch.__getattribute__(kind) }})</a></li>
             {% else %}
             <li role="presentation"><a href= "{{ list_batch_url %
-              (type.lower(), 0, per_page)}}">{{ type }}({{ stats.__getattribute__(type.lower()) }})</a></li>
+              (type.lower(), 0, per_page)}}">{{ type }}({{ stats_batch.__getattribute__(type.lower()) }})</a></li>
             {% endif %}
         {% endfor %}
     </ul>
@@ -26,7 +27,7 @@
                     </li>
             {% endif %}
             {% for i in range(offset // per_page - 2, offset // per_page + 3) %}
-            {% if i >= 0 and i * per_page <= stats.__getattribute__(kind) %}
+            {% if i >= 0 and i * per_page <= stats_batch.__getattribute__(kind) %}
                 <li
                     {% if i * per_page == offset %}
                         class="active"
@@ -38,7 +39,7 @@
                 </li>
             {% endif %}
             {% endfor %}
-            {% if offset + per_page <= stats.__getattribute__(kind) %}
+            {% if offset + per_page <= stats_batch.__getattribute__(kind) %}
             <li>
                 <a href="{{ list_batch_url % (kind, offset + per_page, per_page)}}" aria-label="Previous">
                     <span aria-hidden="true">&raquo;</span>
