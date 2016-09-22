@@ -4,26 +4,26 @@ from app import app
 from app import api
 
 @app.route('/runners')
-@app.route('/runners/<kind>/<int:offset>')
-def runners(kind='waiting', offset=0):
+@app.route('/runners/<kind>/<int:offset>/<int:per_page>')
+def runners(kind = 'waiting', offset = 0, per_page = 20):
     data = {}
     status = None
     if kind != 'all':
         status = kind
-    runners = api.list_runners(status=status, offset=offset, limit=10)
+    runners = api.list_runners(status = status, offset = offset, limit = 10)
     stats = api.stats_runners()
-    return render_template('runners.html', runners=runners, stats=stats, offset=offset, kind=kind)
+    return render_template('runners.html', runners = runners, stats = stats, offset = offset, kind = kind, per_page = per_page)
 
 @app.route('/runners/<int:runner_id>')
-@app.route('/runners/<int:runner_id>/<kind>/<int:offset>')
-def runner(runner_id, offset=0, kind='running'):
+@app.route('/runners/<int:runner_id>/<kind>/<int:offset>/<int:per_page>')
+def runner(runner_id, offset = 0, kind = 'running', per_page = 20):
     if kind == 'all':
-        runs = api.list_runs(data={'runner': str(runner_id)}, limit=10, offset=offset)
+        runs = api.list_runs(data = {'runner': str(runner_id)}, limit = 10, offset = offset)
     else:
-        runs = api.list_runs(data={'runner': str(runner_id),'status':kind}, limit=10, offset=offset)
+        runs = api.list_runs(data = {'runner': str(runner_id),'status':kind}, limit = 10, offset = offset)
     runner = api.get_runner(runner_id)
-    stats = api.stats_run(data={'runner':str(runner_id)})
-    return render_template('runner.html', runner=runner, runs=runs, stats=stats, kind=kind, offset=offset)
+    stats = api.stats_run(data = {'runner':str(runner_id)})
+    return render_template('runner.html', runner = runner, runs = runs, stats = stats, kind = kind, offset = offset, per_page = per_page)
 
 @app.route('/runners/<int:runner_id>/kill')
 def kill(runner_id):
