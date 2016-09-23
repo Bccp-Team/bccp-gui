@@ -1,5 +1,6 @@
 from flask import render_template
 from flask import redirect
+from flask import request
 from app import app
 from app import api
 
@@ -39,3 +40,7 @@ def runner(runner_id, offset = 0, kind = 'running', per_page = 20):
 def kill(runner_id):
     api.kill_runner(api.get_runner(runner_id))
     return redirect('/runners')
+
+@app.route('/runners/search', methods = ['POST'])
+def runners_search():
+    return redirect('/runners/' + request.form['id'])

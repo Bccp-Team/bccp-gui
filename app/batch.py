@@ -1,5 +1,6 @@
 from flask import render_template
 from flask import redirect
+from flask import request
 from app import app
 from app import api
 
@@ -40,3 +41,7 @@ def restart(batch_id):
     batch = api.get_batch(batch_id)
     api.add_batch(batch)
     return redirect('/batchs')
+
+@app.route('/batchs/search', methods = ['POST'])
+def batchs_search():
+    return redirect('/batchs/' + request.form['id'])

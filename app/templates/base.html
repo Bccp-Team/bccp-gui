@@ -34,7 +34,16 @@
                     ><a href="/runs">Runs({{
                       stats_run_global.__getattribute__('running') }}/{{
                       stats_run_global.__getattribute__('waiting') }})<span class="sr-only">(current)</span></a></li>
-                </ul>
+                    <li>
+                    <form class="form-inline" action="{{ url_for(page + '_search') }}" method="post">
+                      <div class="form-group">
+                        <label for="id"></label>
+                        <input type="text" class="form-control" name="id" placeholder="login_x">
+                      </div>
+                      <button type="submit" class="btn btn-primary">Search</button>
+                    </form>
+                    </li>
+                  </ul>
             </div>
         </div>
     </nav>
