@@ -8,9 +8,9 @@ def namespaces():
     print(namespaces)
     stats_batch = api.stats_batch()
     stats_runners = api.stats_runners()
-    stats_run = api.stats_run()
+    stats_run_global = api.stats_run()
     return render_template('namespaces.html', namespaces = namespaces, stats_runners =
-        stats_runners, stats_run = stats_run, stats_batch = stats_batch,
+        stats_runners, stats_run_global = stats_run_global, stats_batch = stats_batch,
 )
 
 @app.route('/namespaces/<namespace>')
@@ -18,9 +18,9 @@ def namespace(namespace):
     repos = api.list_repos(namespace)
     stats_batch = api.stats_batch()
     stats_runners = api.stats_runners()
-    stats_run = api.stats_run()
+    stats_run_global = api.stats_run()
     return render_template('namespace.html', namespace = namespace, repos =
-         repos, stats_runners = stats_runners, stats_run = stats_run, stats_batch = stats_batch,
+         repos, stats_runners = stats_runners, stats_run_global = stats_run_global, stats_batch = stats_batch,
 )
 
 @app.route('/namespaces/repo/<int:repo_id>')
@@ -34,8 +34,8 @@ def repo(repo_id, kind="running", offset = 0):
     if not runs: runs = []
     stats_batch = api.stats_batch()
     stats_runners = api.stats_runners()
-    stats_run = api.stats_run()
+    stats_run_global = api.stats_run()
     return render_template('repo.html', repo = repo_id, runs = runs, kind =
         kind, stats = stats, offset = offset, stats_runners =
-        stats_runners, stats_run = stats_run, stats_batch = stats_batch,
+        stats_runners, stats_run_global = stats_run_global, stats_batch = stats_batch,
 )

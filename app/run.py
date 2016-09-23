@@ -11,19 +11,20 @@ def runs(kind="waiting",offset = 0):
     else:
         runs = api.list_runs(data={'status':kind}, limit = 10, offset = offset)
     stats_runners = api.stats_runners()
-    stats_run = api.stats_run()
+    stats_run_global = api.stats_run()
     stats_batch = api.stats_batch()
     return render_template('runs.html', runs = runs, kind = kind, stats_runners =
-        stats_runners, stats_run = stats_run, stats_batch = stats_batch, offset = offset)
+        stats_runners, stats_run_global = stats_run_global, stats =
+        stats_run_global, stats_batch = stats_batch, offset = offset)
 
 @app.route('/runs/<int:run_id>')
 def run(run_id):
     run = api.get_run(run_id)
     stats_runners = api.stats_runners()
-    stats_run = api.stats_run()
+    stats_run_global = api.stats_run()
     stats_batch = api.stats_batch()
     return render_template('run.html', run = run, stats_runners =
-        stats_runners, stats_run = stats_run, stats_batch = stats_batch)
+        stats_runners, stats_run_global = stats_run_global, stats_batch = stats_batch)
 
 @app.route('/runs/<int:run_id>/retry')
 def retry(run_id):
