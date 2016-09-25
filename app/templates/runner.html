@@ -27,7 +27,7 @@
             alert-danger
             {% endif %}
             " role="alert">{{ runner.status }}</div>
-        {% set list_run_url = "/runners/" + runner.id|string + "/%s/%d/%d" %}
+        {% set list_run_url = "/runners/" + runner.id|string + "/%s" %}
         {% include "list_runs.html" %}
     </div>
 </div>

@@ -1,68 +1,23 @@
-    <ul class="nav nav-tabs">
-        {% for type in ['All', 'Active'] %}
-            {% if type.lower() == kind %}
-                <li role="presentation" class="active"><a href="#">{{ type
-                  }}({{ stats_batch.__getattribute__(kind) }})</a></li>
-            {% else %}
-            <li role="presentation"><a href= "{{ list_batch_url %
-              (type.lower(), 0, per_page)}}">{{ type }}({{ stats_batch.__getattribute__(type.lower()) }})</a></li>
-            {% endif %}
-        {% endfor %}
-    </ul>
+<ul class="nav nav-tabs">
+  {% for type in ['All', 'Active'] %}
+  {% if type.lower() == kind %}
+  <li role="presentation" class="active"><a href="#">{{ type
+    }}({{ stats_batch.__getattribute__(kind) }})</a></li>
+  {% else %}
+  <li role="presentation"><a href= "{{ list_batch_url %
+    (type.lower())}}">{{ type }}({{ stats_batch.__getattribute__(type.lower()) }})</a></li>
+  {% endif %}
+  {% endfor %}
+</ul>
 
-    <nav aria-label="Page navigation">
-        <ul class="pagination">
-            {% if offset - per_page >= 0 %}
-                    <li>
-                        <a href="{{ list_batch_url % (kind, offset - per_page,
-                          per_page)}}" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-            {% else  %}
-                    <li class="disabled">
-                        <a href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-            {% endif %}
-            {% for i in range(offset // per_page - 2, offset // per_page + 3) %}
-            {% if i >= 0 and i * per_page <= stats_batch.__getattribute__(kind) %}
-                <li
-                    {% if i * per_page == offset %}
-                        class="active"
-                    {% endif %}
-                   >
-                    <a href="{{ list_batch_url % (kind, i * per_page, per_page)}}">
-                        {{ i }}
-                    </a>
-                </li>
-            {% endif %}
-            {% endfor %}
-            {% if offset + per_page <= stats_batch.__getattribute__(kind) %}
-            <li>
-                <a href="{{ list_batch_url % (kind, offset + per_page, per_page)}}" aria-label="Previous">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-            </li>
-            {% else  %}
-                    <li class="disabled">
-                        <a href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
-            {% endif %}
-        </ul>
-    </nav>
-
-<table class="table table-bordered table-striped">
+<table class="table table-bordered table-striped" id="topTable">
     <thead>
-    <tr>
+      <tr>
         <th>Id</th>
         <th>Namespace</th>
         <th>Update time</th>
         <th>Timeout</th>
-    </tr>
+      </tr>
     </thead>
     <tbody>
     {% for batch in batchs.batchs %}

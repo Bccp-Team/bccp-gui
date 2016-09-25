@@ -2,7 +2,6 @@
   <head>
     <title>Welcome to BCCP web gui</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   </head>
   <body>
     <nav class="navbar navbar-inverse">
@@ -34,19 +33,23 @@
                     ><a href="/runs">Runs({{
                       stats_run_global.__getattribute__('running') }}/{{
                       stats_run_global.__getattribute__('waiting') }})<span class="sr-only">(current)</span></a></li>
-                    <li>
-                    <form class="form-inline" action="{{ url_for(page + '_search') }}" method="post">
-                      <div class="form-group">
-                        <label for="id"></label>
-                        <input type="text" class="form-control" name="id" placeholder="login_x">
-                      </div>
-                      <button type="submit" class="btn btn-primary">Search</button>
-                    </form>
-                    </li>
                   </ul>
             </div>
         </div>
     </nav>
     {% block content %}{% endblock %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/js/jasny-bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $('#topTable').DataTable({
+          "lengthMenu": [10, 25, 50, "All"]
+        });
+      });
+    </script>
+
   </body>
 </html>

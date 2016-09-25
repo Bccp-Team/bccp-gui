@@ -1,68 +1,23 @@
-<table class="table table-bordered">
+<ul class="nav nav-tabs">
+  {% for type in ['All', 'Waiting', 'Dead'] %}
+  {% if type.lower() == kind %}
+  <li role="presentation" class="active"><a href="#">{{ type }}({{ stats_runners.__getattribute__(kind) }})</a></li>
+  {% else %}
+  <li role="presentation"><a href= "{{ list_runner_url %
+    (type.lower())}}">{{ type }}({{ stats_runners.__getattribute__(type.lower()) }})</a></li>
+  {% endif %}
+  {% endfor %}
+</ul>
+
+<table class="table table-bordered" id="topTable">
+  <thead>
     <tr>
-        <th>Name</th>
-        <th>Status</th>
-        <th>IP</th>
-        <th>Last connection</th>
+      <th>Name</th>
+      <th>Status</th>
+      <th>IP</th>
+      <th>Last connection</th>
     </tr>
-
-    <ul class="nav nav-tabs">
-        {% for type in ['All', 'Waiting', 'Dead'] %}
-            {% if type.lower() == kind %}
-                <li role="presentation" class="active"><a href="#">{{ type }}({{ stats_runners.__getattribute__(kind) }})</a></li>
-            {% else %}
-            <li role="presentation"><a href= "{{ list_runner_url %
-              (type.lower(), 0, per_page)}}">{{ type }}({{ stats_runners.__getattribute__(type.lower()) }})</a></li>
-            {% endif %}
-        {% endfor %}
-    </ul>
-
-    <nav aria-label="Page navigation">
-        <ul class="pagination">
-            {% if offset - per_page >= 0 %}
-                    <li>
-                        <a href="{{ list_runner_url % (kind, offset - per_page,
-                          per_page)}}" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-            {% else  %}
-                    <li class="disabled">
-                        <a href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-            {% endif %}
-            {% for i in range(offset // per_page - 2, offset // per_page + 3) %}
-            {% if i >= 0 and i * per_page <= stats_runners.__getattribute__(kind) %}
-                <li
-                    {% if i * per_page == offset %}
-                        class="active"
-                    {% endif %}
-                   >
-                    <a href="{{ list_runner_url % (kind, i * per_page, per_page)}}">
-                        {{ i }}
-                    </a>
-                </li>
-            {% endif %}
-            {% endfor %}
-            {% if offset + per_page <= stats_runners.__getattribute__(kind) %}
-            <li>
-                <a href="{{ list_runner_url % (kind, offset + per_page,
-                  per_page)}}" aria-label="Previous">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-            </li>
-            {% else  %}
-                    <li class="disabled">
-                        <a href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
-            {% endif %}
-        </ul>
-    </nav>
-
+  </thead>
 
     {% for runner in runners.runners %}
         <tr

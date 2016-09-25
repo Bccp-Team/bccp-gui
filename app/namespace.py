@@ -12,8 +12,7 @@ def namespaces():
     stats_runners = api.stats_runners()
     stats_run_global = api.stats_run()
     return render_template('namespaces.html', namespaces = namespaces, stats_runners =
-        stats_runners, stats_run_global = stats_run_global, stats_batch = stats_batch,
-        per_page = 20)
+        stats_runners, stats_run_global = stats_run_global, stats_batch = stats_batch)
 
 @app.route('/namespaces/<namespace>')
 def namespace(namespace):
@@ -23,25 +22,24 @@ def namespace(namespace):
     stats_run_global = api.stats_run()
     return render_template('namespace.html', namespace = namespace, repos =
          repos, stats_runners = stats_runners, stats_run_global = stats_run_global,
-         stats_batch = stats_batch, per_page = 20)
+         stats_batch = stats_batch)
 
 @app.route('/namespaces/repo/<int:repo_id>')
-@app.route('/namespaces/repo/<int:repo_id>/<kind>/<int:offset>')
-@app.route('/namespaces/repo/<int:repo_id>/<kind>/<int:offset>/<int:per_page>')
-def repo(repo_id, kind="running", offset = 0, per_page = 20):
+@app.route('/namespaces/repo/<int:repo_id>/<kind>')
+@app.route('/namespaces/repo/<int:repo_id>/<kind>')
+def repo(repo_id, kind="running"):
     if kind == 'all':
-        runs = api.list_runs(data = {'repo':str(repo_id)}, limit = 10, offset = offset)
+        runs = api.list_runs(data = {'repo':str(repo_id)})
     else:
-        runs = api.list_runs(data = {'status':kind, 'repo':str(repo_id)}, limit = 10, offset = offset)
+        runs = api.list_runs(data = {'status':kind, 'repo':str(repo_id)})
     stats = api.stats_run(data = {'repo':str(repo_id)})
     if not runs: runs = []
     stats_batch = api.stats_batch()
     stats_runners = api.stats_runners()
     stats_run_global = api.stats_run()
     return render_template('repo.html', repo = repo_id, runs = runs, kind =
-        kind, stats = stats, offset = offset, stats_runners =
-        stats_runners, stats_run_global = stats_run_global, stats_batch = stats_batch,
-        per_page = per_page)
+        kind, stats = stats, stats_runners =
+        stats_runners, stats_run_global = stats_run_global, stats_batch = stats_batch)
 
 @app.route('/namespaces/search', methods = ['POST'])
 def namespaces_search():
