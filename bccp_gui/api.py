@@ -1,11 +1,16 @@
 import requests
 import json
-import api_pb2
+import bccp_gui.api_pb2.api_pb2 as api_pb2
 import grpc
+import bccp_gui
 
-server = "fact-srv:8080"
-channel = grpc.insecure_channel(server)
-stub = api_pb2.ApiStub(channel)
+
+stub = None
+
+def start_api(srv):
+    global stub
+    channel = grpc.insecure_channel(srv)
+    stub = api_pb2.ApiStub(channel)
 
 def list_ns():
     return stub.NamespaceList(api_pb2.Criteria())

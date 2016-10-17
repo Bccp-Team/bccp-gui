@@ -1,6 +1,6 @@
 from flask import render_template
-from app import app
-from app import api
+from bccp_gui import app
+from bccp_gui import api
 
 @app.route('/')
 @app.route('/index')
