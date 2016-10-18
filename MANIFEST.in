@@ -1,0 +1,2 @@
+recursive-include bccp_gui/templates *
+
