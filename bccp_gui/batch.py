@@ -30,7 +30,6 @@ def batch(batch_id, kind = 'waiting'):
     stats_runners = api.stats_runners()
     stats_run_global = api.stats_run()
     batch = api.get_batch(batch_id)
-    print(batch)
     return render_template('batch.html', batch = batch, runs = runs, kind =
         kind, stats_batch = stats_batch, stats_runners =
         stats_runners, stats_run_global = stats_run_global, stats = stats)

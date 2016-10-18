@@ -5,9 +5,11 @@
     <div class="col-md-4">
         <div class="row col-md-4 col-md-offset-2">
             <p>Id</p>
-            <p>Batch</a></p>
+            <p>Batch</p>
             <p>Runner</p>
             <p>Repo</p>
+            <p>Created</p>
+            <p>Last update</p>
             <p><a href="/runs/{{ run.id }}/retry">retry</a></p>
             {% if run.status == 'waiting' or run.status == 'running'%}
                 <p><a href="/runs/{{ run.id }}/cancel">cancel</a></p>
@@ -18,6 +20,8 @@
             <p><a href="/batchs/{{ run.batch }}">{{run.namespace}}({{run.batch}})</a></p>
             <p><a href="/runners/{{ run.runnerId }}">{{run.runnerName}}</a></p>
             <p><a href="/namespaces/repo/{{ run.repo }}">{{run.repoName}}</a></p>
+            <p>{{ run.creation }}</p>
+            <p>{{ run.lastUpdate }}</p>
         </div>
     </div>
     <div class="col-md-7">

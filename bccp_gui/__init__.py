@@ -19,6 +19,8 @@ import bccp_gui
 
 def main():
     args = docopt(__doc__)
-    print(args)
     api.start_api(args['--bccp'])
     bccp_gui.app.run(host=args['--host'], port=int(args['--port']))
+
+if __name__ == "__main__":
+    main()

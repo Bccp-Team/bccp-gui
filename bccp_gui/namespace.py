@@ -7,7 +7,6 @@ from bccp_gui import api
 @app.route('/namespaces')
 def namespaces():
     namespaces = api.list_ns()
-    print(namespaces)
     stats_batch = api.stats_batch()
     stats_runners = api.stats_runners()
     stats_run_global = api.stats_run()
