@@ -15,8 +15,10 @@ from bccp_gui import run
 from bccp_gui import runner
 from bccp_gui import api
 
+import bccp_gui
+
 def main():
     args = docopt(__doc__)
     print(args)
     api.start_api(args['--bccp'])
-    app.run(host=args['--host'], port=int(args['--port']))
+    bccp_gui.app.run(host=args['--host'], port=int(args['--port']))

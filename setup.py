@@ -14,7 +14,7 @@ setup(
 
     license = "Beerware",
 
-    packages=['bccp_gui', 'bccp_gui.api_pb2'],
+    packages=['bccp_gui'],
 
     install_requires=[
         'docopt',
