@@ -10,6 +10,8 @@
             <p>Repo</p>
             <p>Created</p>
             <p>Last update</p>
+            <p>Start</p>
+            <p>Duration</p>
             <p><a href="/runs/{{ run.id }}/retry">retry</a></p>
             {% if run.status == 'waiting' or run.status == 'running'%}
                 <p><a href="/runs/{{ run.id }}/cancel">cancel</a></p>
@@ -18,10 +20,16 @@
         <div class="row col-md-6">
             <p>{{ run.id }}</p>
             <p><a href="/batchs/{{ run.batch }}">{{run.namespace}}({{run.batch}})</a></p>
+            {% if run.runnerId != 0 %}
             <p><a href="/runners/{{ run.runnerId }}">{{run.runnerName}}</a></p>
-            <p><a href="/namespaces/repo/{{ run.repo }}">{{run.repoName}}</a></p>
+            {% else %}
+            <p>None</p>
+            {% endif %}
+            <p><a href="/namespaces/repo/{{ run.repoId }}">{{run.repoName}}</a></p>
             <p>{{ run.creation }}</p>
             <p>{{ run.lastUpdate }}</p>
+            <p>{{ run.startDate }}</p>
+            <p>{{ run.duration }}</p>
         </div>
     </div>
     <div class="col-md-7">

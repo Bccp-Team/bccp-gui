@@ -15,6 +15,7 @@
     <tr>
         <th>Id</th>
         <th>Status</th>
+        <th>Duration</th>
         <th>Runner</th>
         <th>Batch</th>
         <th>Repo</th>
@@ -44,6 +45,7 @@
                 {% endif %}
             </td>
             <td>{{ run.status }}</td>
+            <td>{{ run.duration }}</td>
             <td><a href="/runners/{{ run.runnerId }}">{{run.runnerName}}</a></td>
             <td><a href="/batchs/{{ run.batch }}">{{run.namespace}}({{run.batch}})</a></td>
             <td><a href="/namespaces/repo/{{ run.repoId }}">{{run.repoName}}</a></td>

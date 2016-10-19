@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='api.proto',
   package='front_api',
   syntax='proto3',
-  serialized_pb=_b('\n\tapi.proto\x12\tfront_api\"L\n\x06Runner\x12\n\n\x02id\x18\x01 \x01(\x03\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x0e\n\x06status\x18\x03 \x01(\t\x12\x0c\n\x04\x64\x61te\x18\x04 \x01(\t\x12\n\n\x02ip\x18\x05 \x01(\t\"-\n\x07Runners\x12\"\n\x07runners\x18\x01 \x03(\x0b\x32\x11.front_api.Runner\"9\n\x0bRunnerStats\x12\x0b\n\x03\x61ll\x18\x01 \x01(\x03\x12\x0f\n\x07waiting\x18\x02 \x01(\x03\x12\x0c\n\x04\x64\x65\x61\x64\x18\x03 \x01(\x03\"\xbf\x01\n\x03Run\x12\n\n\x02id\x18\x01 \x01(\x03\x12\x0e\n\x06status\x18\x02 \x01(\t\x12\x10\n\x08runnerId\x18\x03 \x01(\x03\x12\x12\n\nrunnerName\x18\x04 \x01(\t\x12\x0e\n\x06repoId\x18\x05 \x01(\x03\x12\x10\n\x08repoName\x18\x06 \x01(\t\x12\r\n\x05\x62\x61tch\x18\x07 \x01(\x03\x12\x11\n\tnamespace\x18\x08 \x01(\t\x12\x0c\n\x04logs\x18\t \x01(\t\x12\x10\n\x08\x63reation\x18\n \x01(\t\x12\x12\n\nlastUpdate\x18\x0b \x01(\t\"$\n\x04Runs\x12\x1c\n\x04runs\x18\x01 \x03(\x0b\x32\x0e.front_api.Run\"~\n\x08RunStats\x12\x0b\n\x03\x61ll\x18\x01 \x01(\x03\x12\x0f\n\x07waiting\x18\x02 \x01(\x03\x12\x0f\n\x07running\x18\x03 \x01(\x03\x12\x10\n\x08\x63\x61nceled\x18\x04 \x01(\x03\x12\x10\n\x08\x66inished\x18\x05 \x01(\x03\x12\x0e\n\x06\x66\x61iled\x18\x06 \x01(\x03\x12\x0f\n\x07timeout\x18\x07 \x01(\x03\"q\n\x05\x42\x61tch\x12\n\n\x02id\x18\x01 \x01(\x03\x12\x11\n\tnamespace\x18\x02 \x01(\t\x12\x12\n\ninitScript\x18\x03 \x01(\t\x12\x12\n\nupdateTime\x18\x04 \x01(\x03\x12\x0f\n\x07timeout\x18\x05 \x01(\x03\x12\x10\n\x08\x63reation\x18\x06 \x01(\t\"*\n\x06\x42\x61tchs\x12 \n\x06\x62\x61tchs\x18\x01 \x03(\x0b\x32\x10.front_api.Batch\")\n\nBatchStats\x12\x0b\n\x03\x61ll\x18\x01 \x01(\x03\x12\x0e\n\x06\x61\x63tive\x18\x02 \x01(\x03\"9\n\tNamespace\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x1e\n\x05repos\x18\x02 \x03(\x0b\x32\x0f.front_api.Repo\"6\n\nNamespaces\x12(\n\nnamespaces\x18\x01 \x03(\x0b\x32\x14.front_api.Namespace\"@\n\x04Repo\x12\n\n\x02id\x18\x01 \x01(\x03\x12\x11\n\tnamespace\x18\x02 \x01(\t\x12\x0c\n\x04repo\x18\x03 \x01(\t\x12\x0b\n\x03ssh\x18\x04 \x01(\t\"\'\n\x05Repos\x12\x1e\n\x05repos\x18\x01 \x03(\x0b\x32\x0f.front_api.Repo\"\x8c\x01\n\x08\x43riteria\x12\x31\n\x07\x66ilters\x18\x01 \x03(\x0b\x32 .front_api.Criteria.FiltersEntry\x12\r\n\x05limit\x18\x02 \x01(\x03\x12\x0e\n\x06offset\x18\x03 \x01(\x03\x1a.\n\x0c\x46iltersEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x32\xf9\x07\n\x03\x41pi\x12\x35\n\nRunnerList\x12\x13.front_api.Criteria\x1a\x12.front_api.Runners\x12\x39\n\nRunnerStat\x12\x13.front_api.Criteria\x1a\x16.front_api.RunnerStats\x12\x31\n\tRunnerGet\x12\x11.front_api.Runner\x1a\x11.front_api.Runner\x12\x32\n\nRunnerKill\x12\x11.front_api.Runner\x1a\x11.front_api.Runner\x12/\n\x07RunList\x12\x13.front_api.Criteria\x1a\x0f.front_api.Runs\x12\x33\n\x07RunStat\x12\x13.front_api.Criteria\x1a\x13.front_api.RunStats\x12(\n\x06RunGet\x12\x0e.front_api.Run\x1a\x0e.front_api.Run\x12*\n\x08RunStart\x12\x0e.front_api.Run\x1a\x0e.front_api.Run\x12+\n\tRunCancel\x12\x0e.front_api.Run\x1a\x0e.front_api.Run\x12\x33\n\tBatchList\x12\x13.front_api.Criteria\x1a\x11.front_api.Batchs\x12\x39\n\x0f\x42\x61tchListActive\x12\x13.front_api.Criteria\x1a\x11.front_api.Batchs\x12.\n\x08\x42\x61tchGet\x12\x10.front_api.Batch\x1a\x10.front_api.Batch\x12.\n\x08\x42\x61tchAdd\x12\x10.front_api.Batch\x1a\x10.front_api.Batch\x12/\n\nBatchStart\x12\x10.front_api.Batch\x1a\x0f.front_api.Runs\x12\x37\n\tBatchStat\x12\x13.front_api.Criteria\x1a\x15.front_api.BatchStats\x12;\n\rNamespaceList\x12\x13.front_api.Criteria\x1a\x15.front_api.Namespaces\x12:\n\x0cNamespaceGet\x12\x14.front_api.Namespace\x1a\x14.front_api.Namespace\x12=\n\x0fNamespaceCreate\x12\x14.front_api.Namespace\x1a\x14.front_api.Namespace\x12>\n\x10NamespaceAddRepo\x12\x14.front_api.Namespace\x1a\x14.front_api.Namespaceb\x06proto3')
+  serialized_pb=_b('\n\tapi.proto\x12\tfront_api\"L\n\x06Runner\x12\n\n\x02id\x18\x01 \x01(\x03\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x0e\n\x06status\x18\x03 \x01(\t\x12\x0c\n\x04\x64\x61te\x18\x04 \x01(\t\x12\n\n\x02ip\x18\x05 \x01(\t\"-\n\x07Runners\x12\"\n\x07runners\x18\x01 \x03(\x0b\x32\x11.front_api.Runner\"9\n\x0bRunnerStats\x12\x0b\n\x03\x61ll\x18\x01 \x01(\x03\x12\x0f\n\x07waiting\x18\x02 \x01(\x03\x12\x0c\n\x04\x64\x65\x61\x64\x18\x03 \x01(\x03\"\xe4\x01\n\x03Run\x12\n\n\x02id\x18\x01 \x01(\x03\x12\x0e\n\x06status\x18\x02 \x01(\t\x12\x10\n\x08runnerId\x18\x03 \x01(\x03\x12\x12\n\nrunnerName\x18\x04 \x01(\t\x12\x0e\n\x06repoId\x18\x05 \x01(\x03\x12\x10\n\x08repoName\x18\x06 \x01(\t\x12\r\n\x05\x62\x61tch\x18\x07 \x01(\x03\x12\x11\n\tnamespace\x18\x08 \x01(\t\x12\x0c\n\x04logs\x18\t \x01(\t\x12\x10\n\x08\x63reation\x18\n \x01(\t\x12\x12\n\nlastUpdate\x18\x0b \x01(\t\x12\x11\n\tstartDate\x18\x0c \x01(\t\x12\x10\n\x08\x64uration\x18\r \x01(\t\"$\n\x04Runs\x12\x1c\n\x04runs\x18\x01 \x03(\x0b\x32\x0e.front_api.Run\"~\n\x08RunStats\x12\x0b\n\x03\x61ll\x18\x01 \x01(\x03\x12\x0f\n\x07waiting\x18\x02 \x01(\x03\x12\x0f\n\x07running\x18\x03 \x01(\x03\x12\x10\n\x08\x63\x61nceled\x18\x04 \x01(\x03\x12\x10\n\x08\x66inished\x18\x05 \x01(\x03\x12\x0e\n\x06\x66\x61iled\x18\x06 \x01(\x03\x12\x0f\n\x07timeout\x18\x07 \x01(\x03\"q\n\x05\x42\x61tch\x12\n\n\x02id\x18\x01 \x01(\x03\x12\x11\n\tnamespace\x18\x02 \x01(\t\x12\x12\n\ninitScript\x18\x03 \x01(\t\x12\x12\n\nupdateTime\x18\x04 \x01(\x03\x12\x0f\n\x07timeout\x18\x05 \x01(\x03\x12\x10\n\x08\x63reation\x18\x06 \x01(\t\"*\n\x06\x42\x61tchs\x12 \n\x06\x62\x61tchs\x18\x01 \x03(\x0b\x32\x10.front_api.Batch\")\n\nBatchStats\x12\x0b\n\x03\x61ll\x18\x01 \x01(\x03\x12\x0e\n\x06\x61\x63tive\x18\x02 \x01(\x03\"9\n\tNamespace\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x1e\n\x05repos\x18\x02 \x03(\x0b\x32\x0f.front_api.Repo\"6\n\nNamespaces\x12(\n\nnamespaces\x18\x01 \x03(\x0b\x32\x14.front_api.Namespace\"@\n\x04Repo\x12\n\n\x02id\x18\x01 \x01(\x03\x12\x11\n\tnamespace\x18\x02 \x01(\t\x12\x0c\n\x04repo\x18\x03 \x01(\t\x12\x0b\n\x03ssh\x18\x04 \x01(\t\"\'\n\x05Repos\x12\x1e\n\x05repos\x18\x01 \x03(\x0b\x32\x0f.front_api.Repo\"\x8c\x01\n\x08\x43riteria\x12\x31\n\x07\x66ilters\x18\x01 \x03(\x0b\x32 .front_api.Criteria.FiltersEntry\x12\r\n\x05limit\x18\x02 \x01(\x03\x12\x0e\n\x06offset\x18\x03 \x01(\x03\x1a.\n\x0c\x46iltersEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x32\xf9\x07\n\x03\x41pi\x12\x35\n\nRunnerList\x12\x13.front_api.Criteria\x1a\x12.front_api.Runners\x12\x39\n\nRunnerStat\x12\x13.front_api.Criteria\x1a\x16.front_api.RunnerStats\x12\x31\n\tRunnerGet\x12\x11.front_api.Runner\x1a\x11.front_api.Runner\x12\x32\n\nRunnerKill\x12\x11.front_api.Runner\x1a\x11.front_api.Runner\x12/\n\x07RunList\x12\x13.front_api.Criteria\x1a\x0f.front_api.Runs\x12\x33\n\x07RunStat\x12\x13.front_api.Criteria\x1a\x13.front_api.RunStats\x12(\n\x06RunGet\x12\x0e.front_api.Run\x1a\x0e.front_api.Run\x12*\n\x08RunStart\x12\x0e.front_api.Run\x1a\x0e.front_api.Run\x12+\n\tRunCancel\x12\x0e.front_api.Run\x1a\x0e.front_api.Run\x12\x33\n\tBatchList\x12\x13.front_api.Criteria\x1a\x11.front_api.Batchs\x12\x39\n\x0f\x42\x61tchListActive\x12\x13.front_api.Criteria\x1a\x11.front_api.Batchs\x12.\n\x08\x42\x61tchGet\x12\x10.front_api.Batch\x1a\x10.front_api.Batch\x12.\n\x08\x42\x61tchAdd\x12\x10.front_api.Batch\x1a\x10.front_api.Batch\x12/\n\nBatchStart\x12\x10.front_api.Batch\x1a\x0f.front_api.Runs\x12\x37\n\tBatchStat\x12\x13.front_api.Criteria\x1a\x15.front_api.BatchStats\x12;\n\rNamespaceList\x12\x13.front_api.Criteria\x1a\x15.front_api.Namespaces\x12:\n\x0cNamespaceGet\x12\x14.front_api.Namespace\x1a\x14.front_api.Namespace\x12=\n\x0fNamespaceCreate\x12\x14.front_api.Namespace\x1a\x14.front_api.Namespace\x12>\n\x10NamespaceAddRepo\x12\x14.front_api.Namespace\x1a\x14.front_api.Namespaceb\x06proto3')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -245,6 +245,20 @@ _RUN = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='startDate', full_name='front_api.Run.startDate', index=11,
+      number=12, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='duration', full_name='front_api.Run.duration', index=12,
+      number=13, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -258,7 +272,7 @@ _RUN = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=209,
-  serialized_end=400,
+  serialized_end=437,
 )
 
 
@@ -288,8 +302,8 @@ _RUNS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=402,
-  serialized_end=438,
+  serialized_start=439,
+  serialized_end=475,
 )
 
 
@@ -361,8 +375,8 @@ _RUNSTATS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=440,
-  serialized_end=566,
+  serialized_start=477,
+  serialized_end=603,
 )
 
 
@@ -427,8 +441,8 @@ _BATCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=568,
-  serialized_end=681,
+  serialized_start=605,
+  serialized_end=718,
 )
 
 
@@ -458,8 +472,8 @@ _BATCHS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=683,
-  serialized_end=725,
+  serialized_start=720,
+  serialized_end=762,
 )
 
 
@@ -496,8 +510,8 @@ _BATCHSTATS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=727,
-  serialized_end=768,
+  serialized_start=764,
+  serialized_end=805,
 )
 
 
@@ -534,8 +548,8 @@ _NAMESPACE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=770,
-  serialized_end=827,
+  serialized_start=807,
+  serialized_end=864,
 )
 
 
@@ -565,8 +579,8 @@ _NAMESPACES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=829,
-  serialized_end=883,
+  serialized_start=866,
+  serialized_end=920,
 )
 
 
@@ -617,8 +631,8 @@ _REPO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=885,
-  serialized_end=949,
+  serialized_start=922,
+  serialized_end=986,
 )
 
 
@@ -648,8 +662,8 @@ _REPOS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=951,
-  serialized_end=990,
+  serialized_start=988,
+  serialized_end=1027,
 )
 
 
@@ -686,8 +700,8 @@ _CRITERIA_FILTERSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1087,
-  serialized_end=1133,
+  serialized_start=1124,
+  serialized_end=1170,
 )
 
 _CRITERIA = _descriptor.Descriptor(
@@ -730,8 +744,8 @@ _CRITERIA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=993,
-  serialized_end=1133,
+  serialized_start=1030,
+  serialized_end=1170,
 )
 
 _RUNNERS.fields_by_name['runners'].message_type = _RUNNER
