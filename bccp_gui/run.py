@@ -4,11 +4,13 @@ from flask import request
 from bccp_gui import app
 from bccp_gui import api
 
-@app.route('/runs')
-@app.route('/runs/<kind>/')
-def runs(kind="waiting"):
+@app.route('/runs/')
+@app.route('/runs/<kind>')
+@app.route('/runs/<kind>/<int:offset>/<int:limit>')
+@app.route('/runs/<int:offset>/<int:limit>')
+def runs(kind="waiting", offset=0, limit=2000):
     if kind == 'all':
-        runs = api.list_runs()
+        runs = api.list_runs(offset=offset, limit=limit)
     else:
         runs = api.list_runs(data={'status':kind})
     stats_runners = api.stats_runners()
