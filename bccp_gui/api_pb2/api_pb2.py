@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='api.proto',
   package='front_api',
   syntax='proto3',
-  serialized_pb=_b('\n\tapi.proto\x12\tfront_api\"L\n\x06Runner\x12\n\n\x02id\x18\x01 \x01(\x03\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x0e\n\x06status\x18\x03 \x01(\t\x12\x0c\n\x04\x64\x61te\x18\x04 \x01(\t\x12\n\n\x02ip\x18\x05 \x01(\t\"-\n\x07Runners\x12\"\n\x07runners\x18\x01 \x03(\x0b\x32\x11.front_api.Runner\"9\n\x0bRunnerStats\x12\x0b\n\x03\x61ll\x18\x01 \x01(\x03\x12\x0f\n\x07waiting\x18\x02 \x01(\x03\x12\x0c\n\x04\x64\x65\x61\x64\x18\x03 \x01(\x03\"\xe4\x01\n\x03Run\x12\n\n\x02id\x18\x01 \x01(\x03\x12\x0e\n\x06status\x18\x02 \x01(\t\x12\x10\n\x08runnerId\x18\x03 \x01(\x03\x12\x12\n\nrunnerName\x18\x04 \x01(\t\x12\x0e\n\x06repoId\x18\x05 \x01(\x03\x12\x10\n\x08repoName\x18\x06 \x01(\t\x12\r\n\x05\x62\x61tch\x18\x07 \x01(\x03\x12\x11\n\tnamespace\x18\x08 \x01(\t\x12\x0c\n\x04logs\x18\t \x01(\t\x12\x10\n\x08\x63reation\x18\n \x01(\t\x12\x12\n\nlastUpdate\x18\x0b \x01(\t\x12\x11\n\tstartDate\x18\x0c \x01(\t\x12\x10\n\x08\x64uration\x18\r \x01(\t\"$\n\x04Runs\x12\x1c\n\x04runs\x18\x01 \x03(\x0b\x32\x0e.front_api.Run\"~\n\x08RunStats\x12\x0b\n\x03\x61ll\x18\x01 \x01(\x03\x12\x0f\n\x07waiting\x18\x02 \x01(\x03\x12\x0f\n\x07running\x18\x03 \x01(\x03\x12\x10\n\x08\x63\x61nceled\x18\x04 \x01(\x03\x12\x10\n\x08\x66inished\x18\x05 \x01(\x03\x12\x0e\n\x06\x66\x61iled\x18\x06 \x01(\x03\x12\x0f\n\x07timeout\x18\x07 \x01(\x03\"q\n\x05\x42\x61tch\x12\n\n\x02id\x18\x01 \x01(\x03\x12\x11\n\tnamespace\x18\x02 \x01(\t\x12\x12\n\ninitScript\x18\x03 \x01(\t\x12\x12\n\nupdateTime\x18\x04 \x01(\x03\x12\x0f\n\x07timeout\x18\x05 \x01(\x03\x12\x10\n\x08\x63reation\x18\x06 \x01(\t\"*\n\x06\x42\x61tchs\x12 \n\x06\x62\x61tchs\x18\x01 \x03(\x0b\x32\x10.front_api.Batch\")\n\nBatchStats\x12\x0b\n\x03\x61ll\x18\x01 \x01(\x03\x12\x0e\n\x06\x61\x63tive\x18\x02 \x01(\x03\"9\n\tNamespace\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x1e\n\x05repos\x18\x02 \x03(\x0b\x32\x0f.front_api.Repo\"6\n\nNamespaces\x12(\n\nnamespaces\x18\x01 \x03(\x0b\x32\x14.front_api.Namespace\"@\n\x04Repo\x12\n\n\x02id\x18\x01 \x01(\x03\x12\x11\n\tnamespace\x18\x02 \x01(\t\x12\x0c\n\x04repo\x18\x03 \x01(\t\x12\x0b\n\x03ssh\x18\x04 \x01(\t\"\'\n\x05Repos\x12\x1e\n\x05repos\x18\x01 \x03(\x0b\x32\x0f.front_api.Repo\"\x8c\x01\n\x08\x43riteria\x12\x31\n\x07\x66ilters\x18\x01 \x03(\x0b\x32 .front_api.Criteria.FiltersEntry\x12\r\n\x05limit\x18\x02 \x01(\x03\x12\x0e\n\x06offset\x18\x03 \x01(\x03\x1a.\n\x0c\x46iltersEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x32\xf9\x07\n\x03\x41pi\x12\x35\n\nRunnerList\x12\x13.front_api.Criteria\x1a\x12.front_api.Runners\x12\x39\n\nRunnerStat\x12\x13.front_api.Criteria\x1a\x16.front_api.RunnerStats\x12\x31\n\tRunnerGet\x12\x11.front_api.Runner\x1a\x11.front_api.Runner\x12\x32\n\nRunnerKill\x12\x11.front_api.Runner\x1a\x11.front_api.Runner\x12/\n\x07RunList\x12\x13.front_api.Criteria\x1a\x0f.front_api.Runs\x12\x33\n\x07RunStat\x12\x13.front_api.Criteria\x1a\x13.front_api.RunStats\x12(\n\x06RunGet\x12\x0e.front_api.Run\x1a\x0e.front_api.Run\x12*\n\x08RunStart\x12\x0e.front_api.Run\x1a\x0e.front_api.Run\x12+\n\tRunCancel\x12\x0e.front_api.Run\x1a\x0e.front_api.Run\x12\x33\n\tBatchList\x12\x13.front_api.Criteria\x1a\x11.front_api.Batchs\x12\x39\n\x0f\x42\x61tchListActive\x12\x13.front_api.Criteria\x1a\x11.front_api.Batchs\x12.\n\x08\x42\x61tchGet\x12\x10.front_api.Batch\x1a\x10.front_api.Batch\x12.\n\x08\x42\x61tchAdd\x12\x10.front_api.Batch\x1a\x10.front_api.Batch\x12/\n\nBatchStart\x12\x10.front_api.Batch\x1a\x0f.front_api.Runs\x12\x37\n\tBatchStat\x12\x13.front_api.Criteria\x1a\x15.front_api.BatchStats\x12;\n\rNamespaceList\x12\x13.front_api.Criteria\x1a\x15.front_api.Namespaces\x12:\n\x0cNamespaceGet\x12\x14.front_api.Namespace\x1a\x14.front_api.Namespace\x12=\n\x0fNamespaceCreate\x12\x14.front_api.Namespace\x1a\x14.front_api.Namespace\x12>\n\x10NamespaceAddRepo\x12\x14.front_api.Namespace\x1a\x14.front_api.Namespaceb\x06proto3')
+  serialized_pb=_b('\n\tapi.proto\x12\tfront_api\"L\n\x06Runner\x12\n\n\x02id\x18\x01 \x01(\x03\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x0e\n\x06status\x18\x03 \x01(\t\x12\x0c\n\x04\x64\x61te\x18\x04 \x01(\t\x12\n\n\x02ip\x18\x05 \x01(\t\"-\n\x07Runners\x12\"\n\x07runners\x18\x01 \x03(\x0b\x32\x11.front_api.Runner\"9\n\x0bRunnerStats\x12\x0b\n\x03\x61ll\x18\x01 \x01(\x03\x12\x0f\n\x07waiting\x18\x02 \x01(\x03\x12\x0c\n\x04\x64\x65\x61\x64\x18\x03 \x01(\x03\"\xf6\x01\n\x03Run\x12\n\n\x02id\x18\x01 \x01(\x03\x12\x0e\n\x06status\x18\x02 \x01(\t\x12\x10\n\x08runnerId\x18\x03 \x01(\x03\x12\x12\n\nrunnerName\x18\x04 \x01(\t\x12\x0e\n\x06repoId\x18\x05 \x01(\x03\x12\x10\n\x08repoName\x18\x06 \x01(\t\x12\r\n\x05\x62\x61tch\x18\x07 \x01(\x03\x12\x11\n\tnamespace\x18\x08 \x01(\t\x12\x0c\n\x04logs\x18\t \x01(\t\x12\x10\n\x08\x63reation\x18\n \x01(\t\x12\x12\n\nlastUpdate\x18\x0b \x01(\t\x12\x11\n\tstartDate\x18\x0c \x01(\t\x12\x10\n\x08\x64uration\x18\r \x01(\t\x12\x10\n\x08priority\x18\x0e \x01(\r\"$\n\x04Runs\x12\x1c\n\x04runs\x18\x01 \x03(\x0b\x32\x0e.front_api.Run\"~\n\x08RunStats\x12\x0b\n\x03\x61ll\x18\x01 \x01(\x03\x12\x0f\n\x07waiting\x18\x02 \x01(\x03\x12\x0f\n\x07running\x18\x03 \x01(\x03\x12\x10\n\x08\x63\x61nceled\x18\x04 \x01(\x03\x12\x10\n\x08\x66inished\x18\x05 \x01(\x03\x12\x0e\n\x06\x66\x61iled\x18\x06 \x01(\x03\x12\x0f\n\x07timeout\x18\x07 \x01(\x03\"B\n\rBatchCreation\x12\x1f\n\x05\x62\x61tch\x18\x01 \x01(\x0b\x32\x10.front_api.Batch\x12\x10\n\x08priority\x18\x02 \x01(\r\"q\n\x05\x42\x61tch\x12\n\n\x02id\x18\x01 \x01(\x03\x12\x11\n\tnamespace\x18\x02 \x01(\t\x12\x12\n\ninitScript\x18\x03 \x01(\t\x12\x12\n\nupdateTime\x18\x04 \x01(\x03\x12\x0f\n\x07timeout\x18\x05 \x01(\x03\x12\x10\n\x08\x63reation\x18\x06 \x01(\t\"*\n\x06\x42\x61tchs\x12 \n\x06\x62\x61tchs\x18\x01 \x03(\x0b\x32\x10.front_api.Batch\")\n\nBatchStats\x12\x0b\n\x03\x61ll\x18\x01 \x01(\x03\x12\x0e\n\x06\x61\x63tive\x18\x02 \x01(\x03\"9\n\tNamespace\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x1e\n\x05repos\x18\x02 \x03(\x0b\x32\x0f.front_api.Repo\"6\n\nNamespaces\x12(\n\nnamespaces\x18\x01 \x03(\x0b\x32\x14.front_api.Namespace\"P\n\x04Repo\x12\n\n\x02id\x18\x01 \x01(\x03\x12\x11\n\tnamespace\x18\x02 \x01(\t\x12\x0c\n\x04repo\x18\x03 \x01(\t\x12\x0b\n\x03ssh\x18\x04 \x01(\t\x12\x0e\n\x06\x61\x63tive\x18\x05 \x01(\x08\"\'\n\x05Repos\x12\x1e\n\x05repos\x18\x01 \x03(\x0b\x32\x0f.front_api.Repo\"\x8c\x01\n\x08\x43riteria\x12\x31\n\x07\x66ilters\x18\x01 \x03(\x0b\x32 .front_api.Criteria.FiltersEntry\x12\r\n\x05limit\x18\x02 \x01(\x03\x12\x0e\n\x06offset\x18\x03 \x01(\x03\x1a.\n\x0c\x46iltersEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x32\xb9\x08\n\x03\x41pi\x12\x35\n\nRunnerList\x12\x13.front_api.Criteria\x1a\x12.front_api.Runners\x12\x39\n\nRunnerStat\x12\x13.front_api.Criteria\x1a\x16.front_api.RunnerStats\x12\x31\n\tRunnerGet\x12\x11.front_api.Runner\x1a\x11.front_api.Runner\x12\x32\n\nRunnerKill\x12\x11.front_api.Runner\x1a\x11.front_api.Runner\x12/\n\x07RunList\x12\x13.front_api.Criteria\x1a\x0f.front_api.Runs\x12\x33\n\x07RunStat\x12\x13.front_api.Criteria\x1a\x13.front_api.RunStats\x12(\n\x06RunGet\x12\x0e.front_api.Run\x1a\x0e.front_api.Run\x12*\n\x08RunStart\x12\x0e.front_api.Run\x1a\x0e.front_api.Run\x12+\n\tRunCancel\x12\x0e.front_api.Run\x1a\x0e.front_api.Run\x12\x33\n\tBatchList\x12\x13.front_api.Criteria\x1a\x11.front_api.Batchs\x12\x39\n\x0f\x42\x61tchListActive\x12\x13.front_api.Criteria\x1a\x11.front_api.Batchs\x12.\n\x08\x42\x61tchGet\x12\x10.front_api.Batch\x1a\x10.front_api.Batch\x12.\n\x08\x42\x61tchAdd\x12\x10.front_api.Batch\x1a\x10.front_api.Batch\x12\x37\n\nBatchStart\x12\x18.front_api.BatchCreation\x1a\x0f.front_api.Runs\x12\x37\n\tBatchStat\x12\x13.front_api.Criteria\x1a\x15.front_api.BatchStats\x12;\n\rNamespaceList\x12\x13.front_api.Criteria\x1a\x15.front_api.Namespaces\x12:\n\x0cNamespaceGet\x12\x14.front_api.Namespace\x1a\x14.front_api.Namespace\x12=\n\x0fNamespaceCreate\x12\x14.front_api.Namespace\x1a\x14.front_api.Namespace\x12>\n\x10NamespaceAddRepo\x12\x14.front_api.Namespace\x1a\x14.front_api.Namespace\x12\x36\n\x10ReposDesactivate\x12\x10.front_api.Repos\x1a\x10.front_api.Reposb\x06proto3')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -259,6 +259,13 @@ _RUN = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='priority', full_name='front_api.Run.priority', index=13,
+      number=14, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -272,7 +279,7 @@ _RUN = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=209,
-  serialized_end=437,
+  serialized_end=455,
 )
 
 
@@ -302,8 +309,8 @@ _RUNS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=439,
-  serialized_end=475,
+  serialized_start=457,
+  serialized_end=493,
 )
 
 
@@ -375,8 +382,46 @@ _RUNSTATS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=477,
-  serialized_end=603,
+  serialized_start=495,
+  serialized_end=621,
+)
+
+
+_BATCHCREATION = _descriptor.Descriptor(
+  name='BatchCreation',
+  full_name='front_api.BatchCreation',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='batch', full_name='front_api.BatchCreation.batch', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='priority', full_name='front_api.BatchCreation.priority', index=1,
+      number=2, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=623,
+  serialized_end=689,
 )
 
 
@@ -441,8 +486,8 @@ _BATCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=605,
-  serialized_end=718,
+  serialized_start=691,
+  serialized_end=804,
 )
 
 
@@ -472,8 +517,8 @@ _BATCHS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=720,
-  serialized_end=762,
+  serialized_start=806,
+  serialized_end=848,
 )
 
 
@@ -510,8 +555,8 @@ _BATCHSTATS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=764,
-  serialized_end=805,
+  serialized_start=850,
+  serialized_end=891,
 )
 
 
@@ -548,8 +593,8 @@ _NAMESPACE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=807,
-  serialized_end=864,
+  serialized_start=893,
+  serialized_end=950,
 )
 
 
@@ -579,8 +624,8 @@ _NAMESPACES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=866,
-  serialized_end=920,
+  serialized_start=952,
+  serialized_end=1006,
 )
 
 
@@ -619,6 +664,13 @@ _REPO = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='active', full_name='front_api.Repo.active', index=4,
+      number=5, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -631,8 +683,8 @@ _REPO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=922,
-  serialized_end=986,
+  serialized_start=1008,
+  serialized_end=1088,
 )
 
 
@@ -662,8 +714,8 @@ _REPOS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=988,
-  serialized_end=1027,
+  serialized_start=1090,
+  serialized_end=1129,
 )
 
 
@@ -700,8 +752,8 @@ _CRITERIA_FILTERSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1124,
-  serialized_end=1170,
+  serialized_start=1226,
+  serialized_end=1272,
 )
 
 _CRITERIA = _descriptor.Descriptor(
@@ -744,12 +796,13 @@ _CRITERIA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1030,
-  serialized_end=1170,
+  serialized_start=1132,
+  serialized_end=1272,
 )
 
 _RUNNERS.fields_by_name['runners'].message_type = _RUNNER
 _RUNS.fields_by_name['runs'].message_type = _RUN
+_BATCHCREATION.fields_by_name['batch'].message_type = _BATCH
 _BATCHS.fields_by_name['batchs'].message_type = _BATCH
 _NAMESPACE.fields_by_name['repos'].message_type = _REPO
 _NAMESPACES.fields_by_name['namespaces'].message_type = _NAMESPACE
@@ -762,6 +815,7 @@ DESCRIPTOR.message_types_by_name['RunnerStats'] = _RUNNERSTATS
 DESCRIPTOR.message_types_by_name['Run'] = _RUN
 DESCRIPTOR.message_types_by_name['Runs'] = _RUNS
 DESCRIPTOR.message_types_by_name['RunStats'] = _RUNSTATS
+DESCRIPTOR.message_types_by_name['BatchCreation'] = _BATCHCREATION
 DESCRIPTOR.message_types_by_name['Batch'] = _BATCH
 DESCRIPTOR.message_types_by_name['Batchs'] = _BATCHS
 DESCRIPTOR.message_types_by_name['BatchStats'] = _BATCHSTATS
@@ -812,6 +866,13 @@ RunStats = _reflection.GeneratedProtocolMessageType('RunStats', (_message.Messag
   # @@protoc_insertion_point(class_scope:front_api.RunStats)
   ))
 _sym_db.RegisterMessage(RunStats)
+
+BatchCreation = _reflection.GeneratedProtocolMessageType('BatchCreation', (_message.Message,), dict(
+  DESCRIPTOR = _BATCHCREATION,
+  __module__ = 'api_pb2'
+  # @@protoc_insertion_point(class_scope:front_api.BatchCreation)
+  ))
+_sym_db.RegisterMessage(BatchCreation)
 
 Batch = _reflection.GeneratedProtocolMessageType('Batch', (_message.Message,), dict(
   DESCRIPTOR = _BATCH,
@@ -962,7 +1023,7 @@ class ApiStub(object):
         )
     self.BatchStart = channel.unary_unary(
         '/front_api.Api/BatchStart',
-        request_serializer=Batch.SerializeToString,
+        request_serializer=BatchCreation.SerializeToString,
         response_deserializer=Runs.FromString,
         )
     self.BatchStat = channel.unary_unary(
@@ -989,6 +1050,11 @@ class ApiStub(object):
         '/front_api.Api/NamespaceAddRepo',
         request_serializer=Namespace.SerializeToString,
         response_deserializer=Namespace.FromString,
+        )
+    self.ReposDesactivate = channel.unary_unary(
+        '/front_api.Api/ReposDesactivate',
+        request_serializer=Repos.SerializeToString,
+        response_deserializer=Repos.FromString,
         )
 
 
@@ -1089,6 +1155,11 @@ class ApiServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def ReposDesactivate(self, request, context):
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
 
 def add_ApiServicer_to_server(servicer, server):
   rpc_method_handlers = {
@@ -1159,7 +1230,7 @@ def add_ApiServicer_to_server(servicer, server):
       ),
       'BatchStart': grpc.unary_unary_rpc_method_handler(
           servicer.BatchStart,
-          request_deserializer=Batch.FromString,
+          request_deserializer=BatchCreation.FromString,
           response_serializer=Runs.SerializeToString,
       ),
       'BatchStat': grpc.unary_unary_rpc_method_handler(
@@ -1186,6 +1257,11 @@ def add_ApiServicer_to_server(servicer, server):
           servicer.NamespaceAddRepo,
           request_deserializer=Namespace.FromString,
           response_serializer=Namespace.SerializeToString,
+      ),
+      'ReposDesactivate': grpc.unary_unary_rpc_method_handler(
+          servicer.ReposDesactivate,
+          request_deserializer=Repos.FromString,
+          response_serializer=Repos.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(
@@ -1231,6 +1307,8 @@ class BetaApiServicer(object):
   def NamespaceCreate(self, request, context):
     context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
   def NamespaceAddRepo(self, request, context):
+    context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
+  def ReposDesactivate(self, request, context):
     context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
 
 
@@ -1292,6 +1370,9 @@ class BetaApiStub(object):
   def NamespaceAddRepo(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
     raise NotImplementedError()
   NamespaceAddRepo.future = None
+  def ReposDesactivate(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
+    raise NotImplementedError()
+  ReposDesactivate.future = None
 
 
 def beta_create_Api_server(servicer, pool=None, pool_size=None, default_timeout=None, maximum_timeout=None):
@@ -1300,12 +1381,13 @@ def beta_create_Api_server(servicer, pool=None, pool_size=None, default_timeout=
     ('front_api.Api', 'BatchGet'): Batch.FromString,
     ('front_api.Api', 'BatchList'): Criteria.FromString,
     ('front_api.Api', 'BatchListActive'): Criteria.FromString,
-    ('front_api.Api', 'BatchStart'): Batch.FromString,
+    ('front_api.Api', 'BatchStart'): BatchCreation.FromString,
     ('front_api.Api', 'BatchStat'): Criteria.FromString,
     ('front_api.Api', 'NamespaceAddRepo'): Namespace.FromString,
     ('front_api.Api', 'NamespaceCreate'): Namespace.FromString,
     ('front_api.Api', 'NamespaceGet'): Namespace.FromString,
     ('front_api.Api', 'NamespaceList'): Criteria.FromString,
+    ('front_api.Api', 'ReposDesactivate'): Repos.FromString,
     ('front_api.Api', 'RunCancel'): Run.FromString,
     ('front_api.Api', 'RunGet'): Run.FromString,
     ('front_api.Api', 'RunList'): Criteria.FromString,
@@ -1327,6 +1409,7 @@ def beta_create_Api_server(servicer, pool=None, pool_size=None, default_timeout=
     ('front_api.Api', 'NamespaceCreate'): Namespace.SerializeToString,
     ('front_api.Api', 'NamespaceGet'): Namespace.SerializeToString,
     ('front_api.Api', 'NamespaceList'): Namespaces.SerializeToString,
+    ('front_api.Api', 'ReposDesactivate'): Repos.SerializeToString,
     ('front_api.Api', 'RunCancel'): Run.SerializeToString,
     ('front_api.Api', 'RunGet'): Run.SerializeToString,
     ('front_api.Api', 'RunList'): Runs.SerializeToString,
@@ -1348,6 +1431,7 @@ def beta_create_Api_server(servicer, pool=None, pool_size=None, default_timeout=
     ('front_api.Api', 'NamespaceCreate'): face_utilities.unary_unary_inline(servicer.NamespaceCreate),
     ('front_api.Api', 'NamespaceGet'): face_utilities.unary_unary_inline(servicer.NamespaceGet),
     ('front_api.Api', 'NamespaceList'): face_utilities.unary_unary_inline(servicer.NamespaceList),
+    ('front_api.Api', 'ReposDesactivate'): face_utilities.unary_unary_inline(servicer.ReposDesactivate),
     ('front_api.Api', 'RunCancel'): face_utilities.unary_unary_inline(servicer.RunCancel),
     ('front_api.Api', 'RunGet'): face_utilities.unary_unary_inline(servicer.RunGet),
     ('front_api.Api', 'RunList'): face_utilities.unary_unary_inline(servicer.RunList),
@@ -1368,12 +1452,13 @@ def beta_create_Api_stub(channel, host=None, metadata_transformer=None, pool=Non
     ('front_api.Api', 'BatchGet'): Batch.SerializeToString,
     ('front_api.Api', 'BatchList'): Criteria.SerializeToString,
     ('front_api.Api', 'BatchListActive'): Criteria.SerializeToString,
-    ('front_api.Api', 'BatchStart'): Batch.SerializeToString,
+    ('front_api.Api', 'BatchStart'): BatchCreation.SerializeToString,
     ('front_api.Api', 'BatchStat'): Criteria.SerializeToString,
     ('front_api.Api', 'NamespaceAddRepo'): Namespace.SerializeToString,
     ('front_api.Api', 'NamespaceCreate'): Namespace.SerializeToString,
     ('front_api.Api', 'NamespaceGet'): Namespace.SerializeToString,
     ('front_api.Api', 'NamespaceList'): Criteria.SerializeToString,
+    ('front_api.Api', 'ReposDesactivate'): Repos.SerializeToString,
     ('front_api.Api', 'RunCancel'): Run.SerializeToString,
     ('front_api.Api', 'RunGet'): Run.SerializeToString,
     ('front_api.Api', 'RunList'): Criteria.SerializeToString,
@@ -1395,6 +1480,7 @@ def beta_create_Api_stub(channel, host=None, metadata_transformer=None, pool=Non
     ('front_api.Api', 'NamespaceCreate'): Namespace.FromString,
     ('front_api.Api', 'NamespaceGet'): Namespace.FromString,
     ('front_api.Api', 'NamespaceList'): Namespaces.FromString,
+    ('front_api.Api', 'ReposDesactivate'): Repos.FromString,
     ('front_api.Api', 'RunCancel'): Run.FromString,
     ('front_api.Api', 'RunGet'): Run.FromString,
     ('front_api.Api', 'RunList'): Runs.FromString,
@@ -1416,6 +1502,7 @@ def beta_create_Api_stub(channel, host=None, metadata_transformer=None, pool=Non
     'NamespaceCreate': cardinality.Cardinality.UNARY_UNARY,
     'NamespaceGet': cardinality.Cardinality.UNARY_UNARY,
     'NamespaceList': cardinality.Cardinality.UNARY_UNARY,
+    'ReposDesactivate': cardinality.Cardinality.UNARY_UNARY,
     'RunCancel': cardinality.Cardinality.UNARY_UNARY,
     'RunGet': cardinality.Cardinality.UNARY_UNARY,
     'RunList': cardinality.Cardinality.UNARY_UNARY,

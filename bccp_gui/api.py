@@ -58,6 +58,7 @@ def get_runner_run(runner_id, limit=0, offset=0):
     return list_runs(data={'runner': str(runner_id)}, limit=limit, offset=offset)
 
 def add_run_batch(run):
+    run.priority = 5
     return stub.RunStart(run)
 
 def cancel_run(run):
@@ -67,4 +68,4 @@ def kill_runner(run):
     return stub.RunnerKill(run)
 
 def add_batch(batch):
-    return stub.BatchStart(batch)
+    return stub.BatchStart(api_pb2.BatchCriteria(batch=batch, priority=2))
