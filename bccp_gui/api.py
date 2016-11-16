@@ -68,4 +68,4 @@ def kill_runner(run):
     return stub.RunnerKill(run)
 
 def add_batch(batch):
-    return stub.BatchStart(api_pb2.BatchCriteria(batch=batch, priority=2))
+    return stub.BatchStart(api_pb2.BatchCreation(batch=batch, priority=2))
